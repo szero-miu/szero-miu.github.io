@@ -6,8 +6,8 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 7.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="如何搭建一个自己的博客首先你要确保自己有node.js和git node.js(Node.js 中文网 (nodejs.cn))你可以在这里根据自己的型号选取对应的版本 git(Git - Downloads (git-scm.com))同理 这是我的版本号  首先在电脑创建一个用来存储你博客的文件夹，这里我在D盘里命名为blog 安装Hexo在cmd窗口输入以下命令： 1npm install">
@@ -53,8 +53,9 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104000399.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104133822.png">
 <meta property="article:published_time" content="2024-07-21T01:09:20.571Z">
-<meta property="article:modified_time" content="2024-07-21T05:03:38.891Z">
+<meta property="article:modified_time" content="2024-07-21T14:27:39.939Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="自学">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721114339503.png">
 
@@ -129,6 +130,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -143,16 +145,53 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
 
   </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
     </header>
@@ -200,7 +239,16 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2024-07-21 09:09:20 / Modified: 13:03:38" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
+              <time title="Created: 2024-07-21 09:09:20 / Modified: 22:27:39" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
             </span>
 
           
@@ -311,6 +359,59 @@
 <p>这就是在github上部署成功了</p>
 <p>要进行部署文件的话，我们找到blog的source的_posts进行上传，然后部署就行了</p>
 <p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104133822.png" alt="image-20240721104133822"></p>
+<p>到这里基本上基本就完成了</p>
+<p>后面就是进行优化了</p>
+<h3 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h3><p>主要改两个文件都是_config.yml</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/hexo/_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="string">/hexo/themes/next/_config.yml</span></span><br></pre></td></tr></table></figure>
+
+<p>第一个我们称为配置①第二个我们称为配置②</p>
+<h4 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h4><p>在配置①里，找到下面，我们修改language</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">John</span> <span class="string">Doe</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span> <span class="comment">#en</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="标签及分类"><a href="#标签及分类" class="headerlink" title="标签及分类"></a>标签及分类</h4><p>在配置②里，找到<strong>menu</strong>，把我们需要的标签的前面的#去掉</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="comment">#about: /about/ || fa fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="主题切换"><a href="#主题切换" class="headerlink" title="主题切换"></a>主题切换</h4><p>配置②，找到scheme，选一个喜欢的去掉#</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="隐藏网页底部"><a href="#隐藏网页底部" class="headerlink" title="隐藏网页底部"></a>隐藏网页底部</h4><p>打开 <strong>themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig</strong></p>
+<p>找到下面，注释或删除</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">  &#123;%- if config.symbols_count_time.total_symbols %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-item-icon&quot;&gt;</span></span><br><span class="line"><span class="comment">      &lt;i class=&quot;fa fa-chart-area&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="comment">    &lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.symbols_count_time.item_text_total %&#125;</span></span><br><span class="line"><span class="comment">      &lt;span class=&quot;post-meta-item-text&quot;&gt;&#123;&#123; __(&#x27;symbols_count_time.count_total&#x27;) + __(&#x27;symbol.colon&#x27;) &#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span title=&quot;&#123;&#123; __(&#x27;symbols_count_time.count_total&#x27;) &#125;&#125;&quot;&gt;&#123;&#123; symbolsCountTotal(site) &#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">  &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  &#123;%- if config.symbols_count_time.total_time %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-item-icon&quot;&gt;</span></span><br><span class="line"><span class="comment">      &lt;i class=&quot;fa fa-coffee&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="comment">    &lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.symbols_count_time.item_text_total %&#125;</span></span><br><span class="line"><span class="comment">      &lt;span class=&quot;post-meta-item-text&quot;&gt;&#123;&#123; __(&#x27;symbols_count_time.time_total&#x27;) &#125;&#125; &amp;asymp;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span title=&quot;&#123;&#123; __(&#x27;symbols_count_time.time_total&#x27;) &#125;&#125;&quot;&gt;&#123;&#123; symbolsTimeTotal(site, config.symbols_count_time.awl, config.symbols_count_time.wpm, __(&#x27;symbols_count_time.time_minutes&#x27;)) &#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">  &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">&lt;/div&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&#123;%- if theme.footer.powered %&#125;</span></span><br><span class="line"><span class="comment">  &lt;div class=&quot;powered-by&quot;&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- set next_site = &#x27;https://theme-next.org&#x27; %&#125;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.scheme !== &#x27;Gemini&#x27; %&#125;</span></span><br><span class="line"><span class="comment">      &#123;%- set next_site = &#x27;https://&#x27; + theme.scheme | lower + &#x27;.theme-next.org&#x27; %&#125;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &#123;&#123;- __(&#x27;footer.powered&#x27;, next_url(&#x27;https://hexo.io&#x27;, &#x27;Hexo&#x27;, &#123;class: &#x27;theme-link&#x27;&#125;) + &#x27; &amp; &#x27; + next_url(next_site, &#x27;NexT.&#x27; + theme.scheme, &#123;class: &#x27;theme-link&#x27;&#125;)) &#125;&#125;</span></span><br><span class="line"><span class="comment">  &lt;/div&gt;</span></span><br><span class="line"><span class="comment">&#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>要是不一样的话找到class对应的部分进行注释或删除</p>
+<h4 id="文章添加阴影"><a href="#文章添加阴影" class="headerlink" title="文章添加阴影"></a>文章添加阴影</h4><p>创建 &#x2F;themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_custom&#x2F;custom.styl，添加：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.post</span> &#123;</span><br><span class="line"><span class="attr">margin-top:</span> <span class="string">60px;</span></span><br><span class="line"><span class="attr">margin-bottom:</span> <span class="string">60px;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">25px;</span></span><br><span class="line"><span class="string">-webkit-box-shadow:</span> <span class="number">0</span> <span class="number">0</span> <span class="string">5px</span> <span class="string">rgba(202</span>, <span class="number">203</span>, <span class="number">203</span>, <span class="number">.5</span><span class="string">);</span></span><br><span class="line"><span class="string">-moz-box-shadow:</span> <span class="number">0</span> <span class="number">0</span> <span class="string">5px</span> <span class="string">rgba(202</span>, <span class="number">203</span>, <span class="number">204</span>, <span class="number">.5</span><span class="string">);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="浏览页面显示当前浏览进度"><a href="#浏览页面显示当前浏览进度" class="headerlink" title="浏览页面显示当前浏览进度"></a>浏览页面显示当前浏览进度</h4><p>打开 themes&#x2F;next&#x2F;_config.yml，搜索关键字 <code>scrollpercent</code>，把 false 改为 true。</p>
+<h4 id="Local-Search本地搜索"><a href="#Local-Search本地搜索" class="headerlink" title="Local Search本地搜索"></a>Local Search本地搜索</h4><p>安装插件hexo-generator-searchdb,执行以下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
+
+
+
+<p>修改hexo&#x2F;_config.yml配置①，新增以下内容到任意位置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#search function</span><br><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br><span class="line">limit: 10000</span><br></pre></td></tr></table></figure>
+
+
+
+<p>编辑 配置②，启用本地搜索功能：</p>
+<h4 id="Local-search"><a href="#Local-search" class="headerlink" title="Local search"></a>Local search</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">enable: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="设置网站图标"><a href="#设置网站图标" class="headerlink" title="设置网站图标"></a>设置网站图标</h4><p>在 EasyIcon 中找一张（32 * 32）的 ico 图标，或者去别的网站下载或者制作，并将图标名称改为 favicon.ico，然后把图标放在 &#x2F;themes&#x2F;next&#x2F;source&#x2F;images 里，并且修改配置②：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon.ico</span><br><span class="line">  medium: /images/favicon.ico</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /images/manifest.json</span><br><span class="line">  #ms_browserconfig: /images/browserconfig.xml</span><br></pre></td></tr></table></figure>
+
+<h3 id="评论标签实现"><a href="#评论标签实现" class="headerlink" title="评论标签实现"></a>评论标签实现</h3><h5 id="categories创建步骤"><a href="#categories创建步骤" class="headerlink" title="categories创建步骤"></a>categories创建步骤</h5><ul>
+<li><p><strong>新建一个页面，命名为categories。命令如下：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories1</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在myBlog&#x2F;source下会新生成一个新的文件夹categories<br>，在该文件夹下会有一个index.md文件</p>
+</blockquote>
+</li>
+<li><p><strong>编辑categories文件夹下的index.md</strong></p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2024-07-21 22:22:59</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -319,6 +420,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%87%AA%E5%AD%A6/" rel="tag"># 自学</a>
+          </div>
 
         
 
@@ -388,7 +492,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">如何搭建一个自己的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="nav-number">1.2.</span> <span class="nav-text">部署到github</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">如何搭建一个自己的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="nav-number">1.2.</span> <span class="nav-text">部署到github</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">个性化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%AD%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">标签及分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2"><span class="nav-number">2.3.</span> <span class="nav-text">主题切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E7%BD%91%E9%A1%B5%E5%BA%95%E9%83%A8"><span class="nav-number">2.4.</span> <span class="nav-text">隐藏网页底部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1"><span class="nav-number">2.5.</span> <span class="nav-text">文章添加阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%B5%8F%E8%A7%88%E8%BF%9B%E5%BA%A6"><span class="nav-number">2.6.</span> <span class="nav-text">浏览页面显示当前浏览进度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Search%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="nav-number">2.7.</span> <span class="nav-text">Local Search本地搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-search"><span class="nav-number">2.8.</span> <span class="nav-text">Local search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="nav-number">2.9.</span> <span class="nav-text">设置网站图标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E6%A0%87%E7%AD%BE%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">评论标签实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#categories%E5%88%9B%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.0.1.</span> <span class="nav-text">categories创建步骤</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -405,6 +509,18 @@
           <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
 </div>
@@ -435,9 +551,11 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">John Doe</span>
+<!--
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
+-->
 
         
 
@@ -462,7 +580,7 @@
 <script src="/js/motion.js"></script>
 
 
-<script src="/js/schemes/muse.js"></script>
+<script src="/js/schemes/pisces.js"></script>
 
 
 <script src="/js/next-boot.js"></script>
@@ -473,6 +591,10 @@
   
 
 
+
+
+  
+<script src="/js/local-search.js"></script>
 
 
 
