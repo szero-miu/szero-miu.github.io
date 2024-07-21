@@ -159,7 +159,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/07/21/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+            <a href="/2024/07/21/hello-world/" class="post-title-link" itemprop="url">Hexo + next + github</a>
         </h2>
 
         <div class="post-meta">
@@ -168,8 +168,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2024-07-21 09:09:20" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
+              <time title="Created: 2024-07-21 09:09:20 / Modified: 11:07:42" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
             </span>
 
           
@@ -183,19 +184,104 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+          <h3 id="如何搭建一个自己的博客"><a href="#如何搭建一个自己的博客" class="headerlink" title="如何搭建一个自己的博客"></a>如何搭建一个自己的博客</h3><p>首先你要确保自己有node.js和git</p>
+<p>node.js(<a target="_blank" rel="noopener" href="https://nodejs.cn/">Node.js 中文网 (nodejs.cn)</a>)你可以在这里根据自己的型号选取对应的版本</p>
+<p>git(<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a>)同理</p>
+<p>这是我的版本号</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721081741877.png" alt="image-20240721081741877"></p>
+<p>首先在电脑创建一个用来存储你博客的文件夹，这里我在D盘里命名为blog</p>
+<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>在cmd窗口输入以下命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>等待一段时间。。。</p>
+<p>如果出现<img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721082650365.png" alt="image-20240721082650365"></p>
+<p>则是你网络不好</p>
+<p>打开blog文件夹，右键空白处，找到Git Bash Here,打开</p>
+<p><strong>输入<code>hexo init</code> 初始化博客</strong></p>
+<p>出现这种问题可能是对于磁盘的权限没开</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721090940837.png" alt="image-20240721090940837"></p>
+<p>需要右键D盘(我的blog是在D盘，右键属性，找到安全，进行编辑)然后再hexo init</p>
+<p>成功是这样的<img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721092114177.png" alt="image-20240721092114177"></p>
+<p><strong>输入<code>hexo g</code>生成静态文件</strong></p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721092134943.png" alt="image-20240721092134943"></p>
+<p><strong>输入<code>hexo s</code>部署到本地</strong></p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721092158156.png" alt="image-20240721092158156"></p>
+<p>我们到<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721092223395.png" alt="image-20240721092223395"></p>
+<p>成功！</p>
+<p>到这里基本就完成一半了</p>
+<p>这里我是用的是<strong>Next</strong> 主题，你们也可以用其它主题的<a target="_blank" rel="noopener" href="https://hexo.io/plugins/">Plugins | Hexo</a>，最好还是不要花里胡哨，简洁就好</p>
+<p>我们先下载安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus </span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>出现这种情况也是网络不好，多下几次<img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721094323942.png" alt="image-20240721094323942"></p>
+<p>成功</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721094253190.png" alt="image-20240721094253190"></p>
+<p>下载主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721094437754.png" alt="image-20240721094437754"></p>
+<p>会在theme文件夹里多一个next文件夹，就是成功</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721094508046.png" alt="image-20240721094508046"></p>
+<p>在blog文件夹里找到配置文件_config.yml,进行修改</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721094935810.png" alt="image-20240721094935810"></p>
+<p>找到里面的<img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721095007981.png" alt="image-20240721095007981"></p>
+<p>将landscape修改为next(你的theme的文件夹也是你对应的主题)</p>
+<p>然后我们在本地上查看一下效果</p>
+<p>①清除缓存：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>②成静态文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
+
+<p>③部署到本地</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721095413731.png" alt="image-20240721095413731"></p>
+<p>打开网页<a target="_blank" rel="noopener" href="http://localhost:4000/![image-20240721095500405](C:/Users/25373/AppData/Roaming/Typora/typora-user-images/image-20240721095500405.png)">http://localhost:4000/![image-20240721095500405](C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721095500405.png)</a></p>
+<p>成功</p>
+<p>然后我们要部署到github</p>
+<p>安装插件:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save </span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721100803265.png" alt="image-20240721100803265"></p>
+<p>如果老毛病，多下几次，因为网络不好</p>
+<p>来到github,点击右上角的+号，选取New repository,新建一个仓库</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721100908476.png" alt="image-20240721100908476"></p>
+<p>仓库的命名格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你的github用户名.github.io</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721101049441.png" alt="image-20240721101049441"></p>
+<p>后面默认就行。</p>
+<p>他会弹到这里，我们复制https</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/szero-miu/szero-miu.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721101306655.png" alt="image-20240721101306655"></p>
+<p>找到blog的_config.yml，打开找到deploy</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">复制的地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721101630616.png" alt="image-20240721101630616"></p>
+<p>然后依次输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">或者hexo clean &amp;&amp; hexo g &amp;&amp; hexo d </span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721101927278.png" alt="image-20240721101927278"></p>
+<p>成功部署到github</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721102237065.png" alt="image-20240721102237065"></p>
+<p>出现这种问题是因为</p>
+<p>你需要为 Git 配置你的用户名和电子邮件地址。可以用以下命令设置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;szero-miu&quot;</span><br><span class="line">git config --global user.email &quot;2072896619@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>再次运行</p>
+<p>会弹出</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721102416297.png" alt="image-20240721102416297"></p>
+<p>此时，你选哪个都行</p>
+<p>再次运行，成功页面，警告可以忽视</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721103850004.png" alt="image-20240721103850004"></p>
+<p>然后打开<a target="_blank" rel="noopener" href="https://szero-miu.github.io/">https://szero-miu.github.io</a> (根据自己的博客网页填)我们可以看到网页</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721104000399.png" alt="image-20240721104000399"></p>
+<p>这就是在github上部署成功了</p>
+<p>要进行部署文件的话，我们找到blog的source的_posts进行上传，然后部署就行了</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20240721104133822.png" alt="image-20240721104133822"></p>
 
       
     </div>
