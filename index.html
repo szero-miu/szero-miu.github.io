@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
@@ -20,12 +20,14 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="心有所向，无问东西">
+<meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="John Doe">
+<meta property="og:description" content="心有所向，无问东西">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="szero">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/">
@@ -37,7 +39,7 @@
     sidebar: "",
     isHome : true,
     isPost : false,
-    lang   : 'en'
+    lang   : 'zh-CN'
   };
 </script>
 
@@ -81,7 +83,7 @@
     <header class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
+    <div class="toggle" aria-label="切换导航栏">
       <span class="toggle-line toggle-line-first"></span>
       <span class="toggle-line toggle-line-middle"></span>
       <span class="toggle-line toggle-line-last"></span>
@@ -95,6 +97,7 @@
       <h1 class="site-title">Hexo</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
+      <p class="site-subtitle" itemprop="description">因为热爱，所以久远</p>
   </div>
 
   <div class="site-nav-right">
@@ -111,26 +114,26 @@
   <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
 
   </li>
       <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
       </li>
   </ul>
@@ -146,7 +149,7 @@
   </span>
   <div class="search-input-container">
     <input autocomplete="off" autocapitalize="off"
-           placeholder="Searching..." spellcheck="false"
+           placeholder="搜索..." spellcheck="false"
            type="search" class="search-input">
   </div>
   <span class="popup-btn-close">
@@ -182,13 +185,13 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/21/%E9%BC%A0%E6%A0%87%E6%8B%96%E5%B0%BE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="szero">
+      <meta itemprop="description" content="心有所向，无问东西">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -205,16 +208,16 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="Created: 2024-07-21 15:42:44 / Modified: 22:14:20" itemprop="dateCreated datePublished" datetime="2024-07-21T15:42:44+08:00">2024-07-21</time>
+              <time title="创建时间：2024-07-21 15:42:44 / 修改时间：22:53:39" itemprop="dateCreated datePublished" datetime="2024-07-21T15:42:44+08:00">2024-07-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
@@ -231,48 +234,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>突发奇想，在学习python的时候，想要弄一个鼠标拖尾的这样一个东西，下面是我的学习思路</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>首先，我们要初始化</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化 pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置屏幕尺寸和背景颜色</span></span><br><span class="line">width, height = <span class="number">800</span>, <span class="number">600</span></span><br><span class="line">screen = pygame.display.set_mode((width, height))  <span class="comment"># 创建一个宽800，高600的屏幕</span></span><br><span class="line">background_color = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)  <span class="comment"># 黑色背景</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图像</span></span><br><span class="line">heart_image = pygame.image.load(<span class="string">&#x27;python\\鼠标拖尾\\img\\爱心.png&#x27;</span>)  <span class="comment"># 加载图像</span></span><br><span class="line">heart_image = pygame.transform.scale(heart_image, (<span class="number">50</span>, <span class="number">50</span>))  <span class="comment"># 调整图像大小为50x50像素</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个存储爱心位置和透明度的列表</span></span><br><span class="line">trails = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 主循环</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:<span class="comment">#是否点击了x</span></span><br><span class="line">            pygame.quit()  <span class="comment"># 退出游戏</span></span><br><span class="line">            sys.exit()  <span class="comment"># 结束程序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取鼠标位置</span></span><br><span class="line">    mouse_x, mouse_y = pygame.mouse.get_pos()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将鼠标位置和透明度（逐渐减少）添加到拖尾列表</span></span><br><span class="line">    trails.append((mouse_x, mouse_y, <span class="number">255</span>))  <span class="comment"># 255表示完全不透明</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充屏幕</span></span><br><span class="line">    screen.fill(background_color)  </span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制拖尾</span></span><br><span class="line">    <span class="keyword">for</span> (x, y, alpha) <span class="keyword">in</span> trails:</span><br><span class="line">        <span class="comment"># 创建一个具有透明度的图像</span></span><br><span class="line">        heart_with_alpha = heart_image.copy()</span><br><span class="line">        heart_with_alpha.set_alpha(alpha)</span><br><span class="line">        <span class="comment"># 绘制图像</span></span><br><span class="line">        screen.blit(heart_with_alpha, (x - <span class="number">25</span>, y - <span class="number">25</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新拖尾列表中的透明度</span></span><br><span class="line">    trails = [(x, y, alpha - <span class="number">5</span>) <span class="keyword">for</span> (x, y, alpha) <span class="keyword">in</span> trails <span class="keyword">if</span> alpha &gt; <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    pygame.display.flip()  <span class="comment"># 更新显示</span></span><br><span class="line">    pygame.time.delay(<span class="number">30</span>)  <span class="comment"># 控制更新频率</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>​	运行之后，如图所示，现在只是一个跟随鼠标移动图像,我们通过记录鼠标位置及透明度，逐渐绘制多个逐渐透明的爱心图像，从而在屏幕上产生拖尾效果。</p>
-<p><img src="https://s2.loli.net/2024/07/21/Tra2cMPftldAq6Z.png" alt="image.png"></p>
-<h3 id="创建简单的粒子类"><a href="#创建简单的粒子类" class="headerlink" title="创建简单的粒子类"></a>创建简单的粒子类</h3><p>如果这样就结束的话，未免也太过单调了，又想了想，感觉加上粒子效果很不错</p>
-<p>我们先从最基本的粒子类开始，只展示一个静态的粒子图像，不涉及颜色调整和生命周期管理。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="comment"># 粒子类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Particle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x  <span class="comment"># 粒子x坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.y = y  <span class="comment"># 粒子y坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.size = <span class="number">25</span>  <span class="comment"># 粒子大小</span></span><br><span class="line">        <span class="variable language_">self</span>.image = pygame.transform.scale(heart_image, (<span class="variable language_">self</span>.size, <span class="variable language_">self</span>.size))  <span class="comment"># 调整图像大小</span></span><br><span class="line">        <span class="variable language_">self</span>.alpha = <span class="number">255</span>  <span class="comment"># 初始透明度</span></span><br><span class="line">        <span class="variable language_">self</span>.speed = random.uniform(<span class="number">1</span>, <span class="number">5</span>)  <span class="comment"># 随机速度</span></span><br><span class="line">        <span class="variable language_">self</span>.angle = random.uniform(<span class="number">0</span>, <span class="number">2</span> * math.pi)  <span class="comment"># 随机方向（以弧度表示）</span></span><br><span class="line">        <span class="variable language_">self</span>.dx = <span class="variable language_">self</span>.speed * math.cos(<span class="variable language_">self</span>.angle)  <span class="comment"># x方向速度分量</span></span><br><span class="line">        <span class="variable language_">self</span>.dy = <span class="variable language_">self</span>.speed * math.sin(<span class="variable language_">self</span>.angle)  <span class="comment"># y方向速度分量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">draw</span>(<span class="params">self, screen</span>):</span><br><span class="line">        <span class="comment"># 创建一个具有当前透明度的图像</span></span><br><span class="line">        heart_with_alpha = <span class="variable language_">self</span>.image.copy()</span><br><span class="line">        heart_with_alpha.set_alpha(<span class="variable language_">self</span>.alpha)</span><br><span class="line">        <span class="comment"># 绘制图像</span></span><br><span class="line">        screen.blit(heart_with_alpha, (<span class="variable language_">self</span>.x - <span class="variable language_">self</span>.size // <span class="number">2</span>, <span class="variable language_">self</span>.y - <span class="variable language_">self</span>.size // <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 更新粒子的坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.x += <span class="variable language_">self</span>.dx</span><br><span class="line">        <span class="variable language_">self</span>.y += <span class="variable language_">self</span>.dy</span><br><span class="line">        <span class="comment"># 逐渐减少粒子的透明度</span></span><br><span class="line">        <span class="variable language_">self</span>.alpha -= <span class="number">5</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.alpha &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="variable language_">self</span>.alpha = <span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>加上这些粒子类，再运行</p>
-<p><img src="https://s2.loli.net/2024/07/21/k4mxQzS5OGJYh9X.png" alt="image.png"></p>
-<p>​	emmm……有粒子效果了，但是看不清中间的图像了，并且粒子效果太散了，并且粒子要到好远才会消失，我们继续进行优化。调整以下几个方面：</p>
-<ul>
-<li><strong>调整粒子的速度和生命周期</strong>:<ul>
-<li>让粒子的速度慢一点，这样它们不会散得太远，效果就会更好看。</li>
-<li>设置粒子有个“使用期限”，比如它们会在一段时间后自动消失，这样就不会变得太散乱。</li>
-</ul>
-</li>
-<li><strong>确保中心图像清晰</strong>:<ul>
-<li>确保中间的图像依然清晰可见。可以通过减少粒子的数量或增加它们的透明度来做到这一点。</li>
-</ul>
-</li>
-<li><strong>控制粒子的数量和透明度</strong>:<ul>
-<li>每次生成的粒子数量可以控制一下，避免太多粒子影响效果。</li>
-<li>让粒子在消失前有足够的透明度，这样不会遮挡住中心的图像。</li>
-</ul>
-</li>
-</ul>
-<p>我们把粒子大小设为5；粒子的生命周期设置为20-60帧，使它不会停留太久；在主循环里 我们设置每次移动鼠标时，只生成5个粒子(之前是10个)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 粒子类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Particle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x  <span class="comment"># 粒子x坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.y = y  <span class="comment"># 粒子y坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.size = <span class="number">5</span>  <span class="comment"># 粒子大小（减小到5）</span></span><br><span class="line">        <span class="variable language_">self</span>.image = pygame.transform.scale(heart_image, (<span class="variable language_">self</span>.size, <span class="variable language_">self</span>.size))  <span class="comment"># 调整图像大小</span></span><br><span class="line">        <span class="variable language_">self</span>.alpha = <span class="number">255</span>  <span class="comment"># 初始透明度</span></span><br><span class="line">        <span class="variable language_">self</span>.speed = random.uniform(<span class="number">2</span>, <span class="number">4</span>)  <span class="comment"># 随机速度（减小范围）</span></span><br><span class="line">        <span class="variable language_">self</span>.angle = random.uniform(<span class="number">0</span>, <span class="number">2</span> * math.pi)  <span class="comment"># 随机方向（以弧度表示）</span></span><br><span class="line">        <span class="variable language_">self</span>.dx = <span class="variable language_">self</span>.speed * math.cos(<span class="variable language_">self</span>.angle)  <span class="comment"># x方向速度分量</span></span><br><span class="line">        <span class="variable language_">self</span>.dy = <span class="variable language_">self</span>.speed * math.sin(<span class="variable language_">self</span>.angle)  <span class="comment"># y方向速度分量</span></span><br><span class="line">        <span class="variable language_">self</span>.life = random.uniform(<span class="number">20</span>, <span class="number">60</span>)  <span class="comment"># 粒子的生命周期</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">draw</span>(<span class="params">self, screen</span>):</span><br><span class="line">        <span class="comment"># 创建一个具有当前透明度的图像</span></span><br><span class="line">        heart_with_alpha = <span class="variable language_">self</span>.image.copy()</span><br><span class="line">        heart_with_alpha.set_alpha(<span class="variable language_">self</span>.alpha)</span><br><span class="line">        <span class="comment"># 绘制图像</span></span><br><span class="line">        screen.blit(heart_with_alpha, (<span class="variable language_">self</span>.x - <span class="variable language_">self</span>.size // <span class="number">2</span>, <span class="variable language_">self</span>.y - <span class="variable language_">self</span>.size // <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 更新粒子的坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.x += <span class="variable language_">self</span>.dx</span><br><span class="line">        <span class="variable language_">self</span>.y += <span class="variable language_">self</span>.dy</span><br><span class="line">        <span class="comment"># 逐渐减少粒子的透明度</span></span><br><span class="line">        <span class="variable language_">self</span>.alpha -= <span class="number">5</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.alpha &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="variable language_">self</span>.alpha = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 减少生命周期</span></span><br><span class="line">        <span class="variable language_">self</span>.life -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.life &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="variable language_">self</span>.alpha = <span class="number">0</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>如图</p>
-<p><img src="https://s2.loli.net/2024/07/21/U92S7RFAjfMoueY.png" alt="image.png"></p>
-<p>感觉还行，差不多了，后面就是添加颜色了，添加颜色比较简单，只需要在粒子类里进行修改就行了</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">    <span class="variable language_">self</span>.color = (random.randint(<span class="number">100</span>, <span class="number">255</span>), random.randint(<span class="number">100</span>, <span class="number">255</span>), random.randint(<span class="number">100</span>, <span class="number">255</span>))  <span class="comment"># 随机颜色</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw</span>(<span class="params">self, screen</span>):</span><br><span class="line">    <span class="comment"># 创建一个具有当前透明度和颜色的图像</span></span><br><span class="line">    heart_with_alpha = <span class="variable language_">self</span>.image.copy()</span><br><span class="line">    heart_with_alpha.fill(<span class="variable language_">self</span>.color, special_flags=pygame.BLEND_MULT)  <span class="comment"># 应用颜色</span></span><br><span class="line">    heart_with_alpha.set_alpha(<span class="variable language_">self</span>.alpha)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://s2.loli.net/2024/07/21/nAvhgUeNcOIoLaB.png" alt="image.png"></p>
-<p>完整代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 </span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置屏幕</span></span><br><span class="line">width, height = <span class="number">800</span>, <span class="number">600</span></span><br><span class="line">screen = pygame.display.set_mode((width, height))  <span class="comment"># 创建一个宽800，高600的屏幕</span></span><br><span class="line">background_color = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)  <span class="comment"># 黑色背景</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图像</span></span><br><span class="line">heart_image = pygame.image.load(<span class="string">&#x27;python\\鼠标拖尾\\img\\爱心.png&#x27;</span>)  <span class="comment"># 加载图像</span></span><br><span class="line">heart_image = pygame.transform.scale(heart_image, (<span class="number">50</span>, <span class="number">50</span>))  <span class="comment"># 调整图像大小为50x50像素</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 粒子类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Particle</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x, y</span>):</span><br><span class="line">        <span class="variable language_">self</span>.x = x  <span class="comment"># 粒子x坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.y = y  <span class="comment"># 粒子y坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.size = <span class="number">5</span>  <span class="comment"># 粒子大小</span></span><br><span class="line">        <span class="variable language_">self</span>.image = pygame.transform.scale(heart_image, (<span class="variable language_">self</span>.size, <span class="variable language_">self</span>.size))  <span class="comment"># 调整图像大小</span></span><br><span class="line">        <span class="variable language_">self</span>.alpha = <span class="number">255</span>  <span class="comment"># 初始透明度</span></span><br><span class="line">        <span class="variable language_">self</span>.speed = random.uniform(<span class="number">2</span>, <span class="number">4</span>)  <span class="comment"># 随机速度</span></span><br><span class="line">        <span class="variable language_">self</span>.angle = random.uniform(<span class="number">0</span>, <span class="number">2</span> * math.pi)  <span class="comment"># 随机方向(以弧度表示)</span></span><br><span class="line">        <span class="variable language_">self</span>.dx = <span class="variable language_">self</span>.speed * math.cos(<span class="variable language_">self</span>.angle)  <span class="comment"># x方向速度分量</span></span><br><span class="line">        <span class="variable language_">self</span>.dy = <span class="variable language_">self</span>.speed * math.sin(<span class="variable language_">self</span>.angle)  <span class="comment"># y方向速度分量</span></span><br><span class="line">        <span class="variable language_">self</span>.life = random.uniform(<span class="number">20</span>, <span class="number">60</span>)  <span class="comment"># 粒子的生命周期</span></span><br><span class="line">        <span class="variable language_">self</span>.color = (random.randint(<span class="number">100</span>, <span class="number">255</span>), random.randint(<span class="number">100</span>, <span class="number">255</span>), random.randint(<span class="number">100</span>, <span class="number">255</span>))  <span class="comment"># 随机颜色</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">draw</span>(<span class="params">self, screen</span>):</span><br><span class="line">        <span class="comment"># 创建一个具有当前透明度和颜色的图像</span></span><br><span class="line">        heart_with_alpha = <span class="variable language_">self</span>.image.copy()</span><br><span class="line">        heart_with_alpha.fill(<span class="variable language_">self</span>.color, special_flags=pygame.BLEND_MULT)  <span class="comment"># 应用颜色</span></span><br><span class="line">        heart_with_alpha.set_alpha(<span class="variable language_">self</span>.alpha)</span><br><span class="line">        <span class="comment"># 绘制图像</span></span><br><span class="line">        screen.blit(heart_with_alpha, (<span class="variable language_">self</span>.x - <span class="variable language_">self</span>.size // <span class="number">2</span>, <span class="variable language_">self</span>.y - <span class="variable language_">self</span>.size // <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="comment"># 更新粒子的坐标</span></span><br><span class="line">        <span class="variable language_">self</span>.x += <span class="variable language_">self</span>.dx</span><br><span class="line">        <span class="variable language_">self</span>.y += <span class="variable language_">self</span>.dy</span><br><span class="line">        <span class="comment"># 逐渐减少粒子的透明度</span></span><br><span class="line">        <span class="variable language_">self</span>.alpha -= <span class="number">5</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.alpha &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="variable language_">self</span>.alpha = <span class="number">0</span></span><br><span class="line">        <span class="comment"># 减少生命周期</span></span><br><span class="line">        <span class="variable language_">self</span>.life -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="variable language_">self</span>.life &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="variable language_">self</span>.alpha = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 主循环</span></span><br><span class="line">particles = []</span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">        <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">            pygame.quit()  <span class="comment"># 退出游戏</span></span><br><span class="line">            sys.exit()  <span class="comment"># 结束程序</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取鼠标位置</span></span><br><span class="line">    mouse_x, mouse_y = pygame.mouse.get_pos()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建多个粒子</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):  <span class="comment"># 每次鼠标移动时创建5个粒子</span></span><br><span class="line">        particles.append(Particle(mouse_x, mouse_y))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 清屏</span></span><br><span class="line">    screen.fill(background_color)  <span class="comment"># 将屏幕填充为黑色背景</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制中心图像</span></span><br><span class="line">    screen.blit(heart_image, (mouse_x - <span class="number">25</span>, mouse_y - <span class="number">25</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 更新并绘制粒子</span></span><br><span class="line">    <span class="keyword">for</span> particle <span class="keyword">in</span> particles:</span><br><span class="line">        particle.update()</span><br><span class="line">        particle.draw(screen)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 移除已完全透明的粒子</span></span><br><span class="line">    particles = [particle <span class="keyword">for</span> particle <span class="keyword">in</span> particles <span class="keyword">if</span> particle.alpha &gt; <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    pygame.display.flip()  <span class="comment"># 更新显示</span></span><br><span class="line">    pygame.time.delay(<span class="number">30</span>)  <span class="comment"># 控制更新频率</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+          <p>有趣的python项目，鼠标粒子效果</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/21/%E9%BC%A0%E6%A0%87%E6%8B%96%E5%B0%BE/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -290,13 +260,13 @@
       
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/21/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
+      <meta itemprop="name" content="szero">
+      <meta itemprop="description" content="心有所向，无问东西">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -313,16 +283,16 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-calendar"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="Created: 2024-07-21 09:09:20 / Modified: 22:27:39" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
+              <time title="创建时间：2024-07-21 09:09:20 / 修改时间：22:57:00" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
                 </span>
@@ -339,157 +309,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="如何搭建一个自己的博客"><a href="#如何搭建一个自己的博客" class="headerlink" title="如何搭建一个自己的博客"></a>如何搭建一个自己的博客</h3><p>首先你要确保自己有node.js和git</p>
-<p>node.js(<a target="_blank" rel="noopener" href="https://nodejs.cn/">Node.js 中文网 (nodejs.cn)</a>)你可以在这里根据自己的型号选取对应的版本</p>
-<p>git(<a target="_blank" rel="noopener" href="https://git-scm.com/downloads">Git - Downloads (git-scm.com)</a>)同理</p>
-<p>这是我的版本号</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721114339503.png" alt="image-20240721114339503"></p>
-<p>首先在电脑创建一个用来存储你博客的文件夹，这里我在D盘里命名为blog</p>
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h4><p>在cmd窗口输入以下命令：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-
-<p>等待一段时间。。。</p>
-<p>如果出现<img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721082650365.png" alt="image-20240721082650365"></p>
-<p>则是你网络不好</p>
-<p>打开blog文件夹，右键空白处，找到Git Bash Here,打开</p>
-<p><strong>输入<code>hexo init</code> 初始化博客</strong></p>
-<p>出现这种问题可能是对于磁盘的权限没开</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721090940837.png" alt="image-20240721090940837"></p>
-<p>需要右键D盘(我的blog是在D盘，右键属性，找到安全，进行编辑)然后再hexo init</p>
-<p>成功是这样的<img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721092114177.png" alt="image-20240721092114177"></p>
-<p><strong>输入<code>hexo g</code>生成静态文件</strong></p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721092134943.png" alt="image-20240721092134943"></p>
-<p><strong>输入<code>hexo s</code>部署到本地</strong></p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721092158156.png" alt="image-20240721092158156"></p>
-<p>我们到<a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a></p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721092223395.png" alt="image-20240721092223395"></p>
-<p>成功！</p>
-<p>到这里基本就完成一半了</p>
-<p>这里我是用的是<strong>Next</strong> 主题，你们也可以用其它主题的<a target="_blank" rel="noopener" href="https://hexo.io/plugins/">Plugins | Hexo</a>，最好还是不要花里胡哨，简洁就好</p>
-<p>我们先下载安装依赖</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-pug hexo-renderer-stylus </span><br></pre></td></tr></table></figure>
-
-<p>出现这种情况也是网络不好，多下几次<img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721094323942.png" alt="image-20240721094323942"></p>
-<p>成功<img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721094253190.png" alt="image-20240721094253190"></p>
-<p>下载主题</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/theme-next/hexo-theme-next themes/next</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721094437754.png" alt="image-20240721094437754"></p>
-<p>会在theme文件夹里多一个next文件夹，就是成功</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721094508046.png" alt="image-20240721094508046"></p>
-<p>在blog文件夹里找到配置文件_config.yml,进行修改</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721094935810.png" alt="image-20240721094935810"></p>
-<p>找到里面的<img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721095007981.png" alt="image-20240721095007981"></p>
-<p>将landscape修改为next(你的theme的文件夹也是你对应的主题)</p>
-<p>然后我们在本地上查看一下效果</p>
-<p>①清除缓存：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
-
-<p>②成静态文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>③部署到本地</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721095413731.png" alt="image-20240721095413731"></p>
-<p>打开网页<a target="_blank" rel="noopener" href="http://localhost:4000/![image-20240721095500405](https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721095500405.png)">http://localhost:4000/![image-20240721095500405](https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721095500405.png)</a></p>
-<p>成功</p>
-<h4 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h4><p>然后我们要部署到github</p>
-<p>安装插件:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721100803265.png" alt="image-20240721100803265"></p>
-<p>如果老毛病，多下几次，因为网络不好</p>
-<p>来到github,点击右上角的+号，选取New repository,新建一个仓库</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721100908476.png" alt="image-20240721100908476"></p>
-<p>仓库的命名格式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">你的github用户名.github.io</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721101049441.png" alt="image-20240721101049441"></p>
-<p>后面默认就行。</p>
-<p>他会弹到这里，我们复制https</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/szero-miu/szero-miu.github.io.git</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721101306655.png" alt="image-20240721101306655"></p>
-<p>找到blog的_config.yml，打开找到deploy</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">&#x27;git&#x27;</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">复制的地址</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721101630616.png" alt="image-20240721101630616"></p>
-<p>然后依次输入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line">或者hexo clean &amp;&amp; hexo g &amp;&amp; hexo d </span><br></pre></td></tr></table></figure>
-
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721101927278.png" alt="image-20240721101927278"></p>
-<p>成功部署到github</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721102237065.png" alt="image-20240721102237065"></p>
-<p>出现这种问题是因为</p>
-<p>你需要为 Git 配置你的用户名和电子邮件地址。可以用以下命令设置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;szero-miu&quot;</span><br><span class="line">git config --global user.email &quot;2072896619@qq.com&quot;</span><br></pre></td></tr></table></figure>
-
-<p>再次运行</p>
-<p>会弹出</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721102416297.png" alt="image-20240721102416297"></p>
-<p>此时，你选哪个都行</p>
-<p>再次运行，成功页面，警告可以忽视</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721103850004.png" alt="image-20240721103850004"></p>
-<p>然后打开<a target="_blank" rel="noopener" href="https://szero-miu.github.io/">https://szero-miu.github.io</a> (根据自己的博客网页填)我们可以看到网页</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104000399.png" alt="image-20240721104000399"></p>
-<p>这就是在github上部署成功了</p>
-<p>要进行部署文件的话，我们找到blog的source的_posts进行上传，然后部署就行了</p>
-<p><img src="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104133822.png" alt="image-20240721104133822"></p>
-<p>到这里基本上基本就完成了</p>
-<p>后面就是进行优化了</p>
-<h3 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h3><p>主要改两个文件都是_config.yml</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/hexo/_config.yml</span></span><br><span class="line"></span><br><span class="line"><span class="string">/hexo/themes/next/_config.yml</span></span><br></pre></td></tr></table></figure>
-
-<p>第一个我们称为配置①第二个我们称为配置②</p>
-<h4 id="修改语言"><a href="#修改语言" class="headerlink" title="修改语言"></a>修改语言</h4><p>在配置①里，找到下面，我们修改language</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Hexo</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">John</span> <span class="string">Doe</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span> <span class="comment">#en</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="标签及分类"><a href="#标签及分类" class="headerlink" title="标签及分类"></a>标签及分类</h4><p>在配置②里，找到<strong>menu</strong>，把我们需要的标签的前面的#去掉</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="attr">home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-home</span></span><br><span class="line">  <span class="comment">#about: /about/ || fa fa-user</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-tags</span></span><br><span class="line">  <span class="attr">categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-th</span></span><br><span class="line">  <span class="attr">archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fa</span> <span class="string">fa-archive</span></span><br><span class="line">  <span class="comment">#schedule: /schedule/ || fa fa-calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || fa fa-sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || fa fa-heartbeat</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="主题切换"><a href="#主题切换" class="headerlink" title="主题切换"></a>主题切换</h4><p>配置②，找到scheme，选一个喜欢的去掉#</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Schemes</span></span><br><span class="line"><span class="attr">scheme:</span> <span class="string">Muse</span></span><br><span class="line"><span class="comment">#scheme: Mist</span></span><br><span class="line"><span class="comment">#scheme: Pisces</span></span><br><span class="line"><span class="comment">#scheme: Gemini</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="隐藏网页底部"><a href="#隐藏网页底部" class="headerlink" title="隐藏网页底部"></a>隐藏网页底部</h4><p>打开 <strong>themes&#x2F;next&#x2F;layout&#x2F;_partials&#x2F;footer.swig</strong></p>
-<p>找到下面，注释或删除</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">  &#123;%- if config.symbols_count_time.total_symbols %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-item-icon&quot;&gt;</span></span><br><span class="line"><span class="comment">      &lt;i class=&quot;fa fa-chart-area&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="comment">    &lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.symbols_count_time.item_text_total %&#125;</span></span><br><span class="line"><span class="comment">      &lt;span class=&quot;post-meta-item-text&quot;&gt;&#123;&#123; __(&#x27;symbols_count_time.count_total&#x27;) + __(&#x27;symbol.colon&#x27;) &#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span title=&quot;&#123;&#123; __(&#x27;symbols_count_time.count_total&#x27;) &#125;&#125;&quot;&gt;&#123;&#123; symbolsCountTotal(site) &#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">  &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">  &#123;%- if config.symbols_count_time.total_time %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &lt;span class=&quot;post-meta-item-icon&quot;&gt;</span></span><br><span class="line"><span class="comment">      &lt;i class=&quot;fa fa-coffee&quot;&gt;&lt;/i&gt;</span></span><br><span class="line"><span class="comment">    &lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.symbols_count_time.item_text_total %&#125;</span></span><br><span class="line"><span class="comment">      &lt;span class=&quot;post-meta-item-text&quot;&gt;&#123;&#123; __(&#x27;symbols_count_time.time_total&#x27;) &#125;&#125; &amp;asymp;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &lt;span title=&quot;&#123;&#123; __(&#x27;symbols_count_time.time_total&#x27;) &#125;&#125;&quot;&gt;&#123;&#123; symbolsTimeTotal(site, config.symbols_count_time.awl, config.symbols_count_time.wpm, __(&#x27;symbols_count_time.time_minutes&#x27;)) &#125;&#125;&lt;/span&gt;</span></span><br><span class="line"><span class="comment">  &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">&lt;/div&gt;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">&#123;%- if theme.footer.powered %&#125;</span></span><br><span class="line"><span class="comment">  &lt;div class=&quot;powered-by&quot;&gt;</span></span><br><span class="line"><span class="comment">    &#123;%- set next_site = &#x27;https://theme-next.org&#x27; %&#125;</span></span><br><span class="line"><span class="comment">    &#123;%- if theme.scheme !== &#x27;Gemini&#x27; %&#125;</span></span><br><span class="line"><span class="comment">      &#123;%- set next_site = &#x27;https://&#x27; + theme.scheme | lower + &#x27;.theme-next.org&#x27; %&#125;</span></span><br><span class="line"><span class="comment">    &#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">    &#123;&#123;- __(&#x27;footer.powered&#x27;, next_url(&#x27;https://hexo.io&#x27;, &#x27;Hexo&#x27;, &#123;class: &#x27;theme-link&#x27;&#125;) + &#x27; &amp; &#x27; + next_url(next_site, &#x27;NexT.&#x27; + theme.scheme, &#123;class: &#x27;theme-link&#x27;&#125;)) &#125;&#125;</span></span><br><span class="line"><span class="comment">  &lt;/div&gt;</span></span><br><span class="line"><span class="comment">&#123;%- endif %&#125;</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>要是不一样的话找到class对应的部分进行注释或删除</p>
-<h4 id="文章添加阴影"><a href="#文章添加阴影" class="headerlink" title="文章添加阴影"></a>文章添加阴影</h4><p>创建 &#x2F;themes&#x2F;next&#x2F;source&#x2F;css&#x2F;_custom&#x2F;custom.styl，添加：</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.post</span> &#123;</span><br><span class="line"><span class="attr">margin-top:</span> <span class="string">60px;</span></span><br><span class="line"><span class="attr">margin-bottom:</span> <span class="string">60px;</span></span><br><span class="line"><span class="attr">padding:</span> <span class="string">25px;</span></span><br><span class="line"><span class="string">-webkit-box-shadow:</span> <span class="number">0</span> <span class="number">0</span> <span class="string">5px</span> <span class="string">rgba(202</span>, <span class="number">203</span>, <span class="number">203</span>, <span class="number">.5</span><span class="string">);</span></span><br><span class="line"><span class="string">-moz-box-shadow:</span> <span class="number">0</span> <span class="number">0</span> <span class="string">5px</span> <span class="string">rgba(202</span>, <span class="number">203</span>, <span class="number">204</span>, <span class="number">.5</span><span class="string">);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="浏览页面显示当前浏览进度"><a href="#浏览页面显示当前浏览进度" class="headerlink" title="浏览页面显示当前浏览进度"></a>浏览页面显示当前浏览进度</h4><p>打开 themes&#x2F;next&#x2F;_config.yml，搜索关键字 <code>scrollpercent</code>，把 false 改为 true。</p>
-<h4 id="Local-Search本地搜索"><a href="#Local-Search本地搜索" class="headerlink" title="Local Search本地搜索"></a>Local Search本地搜索</h4><p>安装插件hexo-generator-searchdb,执行以下命令:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-
-
-
-<p>修改hexo&#x2F;_config.yml配置①，新增以下内容到任意位置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#search function</span><br><span class="line">search:</span><br><span class="line">path: search.xml</span><br><span class="line">field: post</span><br><span class="line">format: html</span><br><span class="line">limit: 10000</span><br></pre></td></tr></table></figure>
-
-
-
-<p>编辑 配置②，启用本地搜索功能：</p>
-<h4 id="Local-search"><a href="#Local-search" class="headerlink" title="Local search"></a>Local search</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">enable: true</span><br></pre></td></tr></table></figure>
-
-<h4 id="设置网站图标"><a href="#设置网站图标" class="headerlink" title="设置网站图标"></a>设置网站图标</h4><p>在 EasyIcon 中找一张（32 * 32）的 ico 图标，或者去别的网站下载或者制作，并将图标名称改为 favicon.ico，然后把图标放在 &#x2F;themes&#x2F;next&#x2F;source&#x2F;images 里，并且修改配置②：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">favicon:</span><br><span class="line">  small: /images/favicon.ico</span><br><span class="line">  medium: /images/favicon.ico</span><br><span class="line">  apple_touch_icon: /images/apple-touch-icon-next.png</span><br><span class="line">  safari_pinned_tab: /images/logo.svg</span><br><span class="line">  #android_manifest: /images/manifest.json</span><br><span class="line">  #ms_browserconfig: /images/browserconfig.xml</span><br></pre></td></tr></table></figure>
-
-<h3 id="评论标签实现"><a href="#评论标签实现" class="headerlink" title="评论标签实现"></a>评论标签实现</h3><h5 id="categories创建步骤"><a href="#categories创建步骤" class="headerlink" title="categories创建步骤"></a>categories创建步骤</h5><ul>
-<li><p><strong>新建一个页面，命名为categories。命令如下：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories1</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在myBlog&#x2F;source下会新生成一个新的文件夹categories<br>，在该文件夹下会有一个index.md文件</p>
-</blockquote>
-</li>
-<li><p><strong>编辑categories文件夹下的index.md</strong></p>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2024-07-21 22:22:59</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
-
-
+          <p>搭建博客的详细教程，小白都会</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/21/hello-world/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -548,10 +376,10 @@
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
-          Table of Contents
+          文章目录
         </li>
         <li class="sidebar-nav-overview">
-          Overview
+          站点概览
         </li>
       </ul>
 
@@ -562,8 +390,8 @@
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">John Doe</p>
-  <div class="site-description" itemprop="description"></div>
+  <p class="site-author-name" itemprop="name">szero</p>
+  <div class="site-description" itemprop="description">心有所向，无问东西</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -571,20 +399,20 @@
           <a href="/archives/">
         
           <span class="site-state-item-count">2</span>
-          <span class="site-state-item-name">posts</span>
+          <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">categories</span></a>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
         <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span></a>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
@@ -606,7 +434,7 @@
         
 
         
-
+<!--
 <div class="copyright">
   
   &copy; 
@@ -614,10 +442,9 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
-<!--
+  <span class="author" itemprop="copyrightHolder">szero</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
 -->
 
