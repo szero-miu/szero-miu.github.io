@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="搭建博客的详细教程，小白都会">
@@ -53,7 +53,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104000399.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/szero-miu/szero-miu.github.io/master/images/image-20240721104133822.png">
 <meta property="article:published_time" content="2024-07-21T01:09:20.571Z">
-<meta property="article:modified_time" content="2024-07-21T14:57:00.735Z">
+<meta property="article:modified_time" content="2024-07-22T02:16:11.721Z">
 <meta property="article:author" content="szero">
 <meta property="article:tag" content="自学">
 <meta name="twitter:card" content="summary">
@@ -219,7 +219,7 @@
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/07/21/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/head.gif">
       <meta itemprop="name" content="szero">
       <meta itemprop="description" content="心有所向，无问东西">
     </span>
@@ -238,10 +238,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-07-21 09:09:20 / 修改时间：22:57:00" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
+              <time title="创建时间：2024-07-21 09:09:20" itemprop="dateCreated datePublished" datetime="2024-07-21T09:09:20+08:00">2024-07-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-07-22 10:16:11" itemprop="dateModified" datetime="2024-07-22T10:16:11+08:00">2024-07-22</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -253,6 +259,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
             <div class="post-description">搭建博客的详细教程，小白都会</div>
 
         </div>
@@ -414,6 +427,35 @@
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: categories</span><br><span class="line">date: 2024-07-21 22:22:59</span><br><span class="line">type: &quot;categories&quot;</span><br></pre></td></tr></table></figure>
 
+<h4 id="设置头像"><a href="#设置头像" class="headerlink" title="设置头像"></a>设置头像</h4><p>打开主题配置文件，搜索关键字 Sidebar Avatar 进行定位，将 avatar 的值设置成头像图片的链接地址即可。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Sidebar Avatar</span></span><br><span class="line"><span class="attr">avatar:</span></span><br><span class="line">  <span class="attr">url:</span> <span class="comment">#/images/avatar.gif</span></span><br><span class="line"><span class="comment">#修改头像边框为圆形</span></span><br><span class="line">  <span class="attr">rounded:</span> <span class="literal">true</span></span><br><span class="line"><span class="comment">#鼠标放置头像时，头像旋转特效</span></span><br><span class="line">  <span class="attr">rotated:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="侧边栏的位置"><a href="#侧边栏的位置" class="headerlink" title="侧边栏的位置"></a>侧边栏的位置</h4><p>找到sidebar，将position设置成你想要的位置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sidebar:</span></span><br><span class="line">  <span class="comment"># Sidebar Position.</span></span><br><span class="line">  <span class="attr">position:</span> <span class="string">left</span></span><br><span class="line">  <span class="comment">#position: right</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar Display (only for Muse | Mist), available values:</span></span><br><span class="line"><span class="comment">#  - post    expand on posts automatically. Default.</span></span><br><span class="line"><span class="comment">#  - always  expand for all pages automatically.</span></span><br><span class="line"><span class="comment">#  - hide    expand only when click on the sidebar toggle icon.</span></span><br><span class="line"><span class="comment">#  - remove  totally remove sidebar including sidebar toggle.</span></span><br><span class="line"><span class="attr">display:</span> <span class="string">post</span></span><br></pre></td></tr></table></figure>
+
+<p>post - 默认行为，在文章页面（拥有目录列表）时显示</p>
+<p>always - 在所有页面中都显示</p>
+<p>hide - 在所有页面中都隐藏（可以手动展开）</p>
+<p>remove - 完全移除</p>
+<h4 id="文章统计"><a href="#文章统计" class="headerlink" title="文章统计"></a>文章统计</h4><p>文章阅读数。站点访问数和点击数。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show Views / Visitors of the website / page with busuanzi.</span></span><br><span class="line"><span class="comment"># Get more information on http://ibruce.info/2015/04/04/busuanzi</span></span><br><span class="line"><span class="attr">busuanzi_count:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">total_visitors:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_visitors_icon:</span> <span class="string">fa</span> <span class="string">fa-user</span></span><br><span class="line">  <span class="attr">total_views:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_views_icon:</span> <span class="string">fa</span> <span class="string">fa-eye</span></span><br><span class="line">  <span class="attr">post_views:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">post_views_icon:</span> <span class="string">fa</span> <span class="string">fa-eye</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文章目录"><a href="#文章目录" class="headerlink" title="文章目录"></a>文章目录</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">toc:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># Automatically add list number to toc.</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># If true, all words will placed on next lines if header width longer then sidebar width.</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">false</span></span><br><span class="line">  <span class="comment"># If true, all level of TOC in a post will be displayed, rather than the activated part of it.</span></span><br><span class="line">  <span class="attr">expand_all:</span> <span class="literal">true</span> <span class="comment">#目录全部展开</span></span><br><span class="line">  <span class="comment"># Maximum heading depth of generated toc.</span></span><br><span class="line">  <span class="attr">max_depth:</span> <span class="number">6</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="代码复制"><a href="#代码复制" class="headerlink" title="代码复制"></a>代码复制</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">codeblock:</span></span><br><span class="line">  <span class="comment"># Code Highlight theme</span></span><br><span class="line">  <span class="comment"># Available values: normal | night | night eighties | night blue | night bright | solarized | solarized dark | galactic</span></span><br><span class="line">  <span class="comment"># See: https://github.com/chriskempson/tomorrow-theme</span></span><br><span class="line">  <span class="attr">highlight_theme:</span> <span class="string">normal</span></span><br><span class="line">  <span class="comment"># Add copy button on codeblock</span></span><br><span class="line">  <span class="attr">copy_button:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># Show text copy result.</span></span><br><span class="line">    <span class="attr">show_result:</span> <span class="literal">true</span> <span class="comment">#是否显示复制成功</span></span><br><span class="line">    <span class="comment"># Available values: default | flat | mac</span></span><br><span class="line">    <span class="attr">style:</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="各版块透明度修改"><a href="#各版块透明度修改" class="headerlink" title="各版块透明度修改"></a>各版块透明度修改</h4><h5 id="内容板块透明"><a href="#内容板块透明" class="headerlink" title="内容板块透明"></a>内容板块透明</h5><p>博客根目录 themes\next\source\css_schemes\Pisces_layout.styl文件 .content-wrap 标签下 background: white修改为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">background:</span> <span class="string">rgba(255,255,255,0.6);</span> </span><br></pre></td></tr></table></figure>
+
+<h5 id="菜单栏背景"><a href="#菜单栏背景" class="headerlink" title="菜单栏背景"></a>菜单栏背景</h5><p>博客根目录 themes\next\source\css_schemes\Pisces_layout.styl文件.header-inner标签下 background: white修改为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">background:</span> <span class="string">rgba(255,255,255,0.6);</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="站点概况背景"><a href="#站点概况背景" class="headerlink" title="站点概况背景"></a>站点概况背景</h5><p>博客根目录themes\next\source\css_schemes\Pisces_sidebar.styl 文件.sidebar-inner 标签下 background: white修改为：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">background:</span> <span class="string">rgba(255,255,255,0.7);</span> <span class="string">//0.7是透明度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="博客背景图片"><a href="#博客背景图片" class="headerlink" title="博客背景图片"></a>博客背景图片</h3><p>在<code>themes/next/source/css/_custom/custom.styl</code>中添加CSS样式</p>
 
     </div>
 
@@ -494,12 +536,14 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">如何搭建一个自己的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="nav-number">1.2.</span> <span class="nav-text">部署到github</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">个性化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%AD%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">标签及分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2"><span class="nav-number">2.3.</span> <span class="nav-text">主题切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E7%BD%91%E9%A1%B5%E5%BA%95%E9%83%A8"><span class="nav-number">2.4.</span> <span class="nav-text">隐藏网页底部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1"><span class="nav-number">2.5.</span> <span class="nav-text">文章添加阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%B5%8F%E8%A7%88%E8%BF%9B%E5%BA%A6"><span class="nav-number">2.6.</span> <span class="nav-text">浏览页面显示当前浏览进度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Search%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="nav-number">2.7.</span> <span class="nav-text">Local Search本地搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-search"><span class="nav-number">2.8.</span> <span class="nav-text">Local search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="nav-number">2.9.</span> <span class="nav-text">设置网站图标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E6%A0%87%E7%AD%BE%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">评论标签实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#categories%E5%88%9B%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.0.1.</span> <span class="nav-text">categories创建步骤</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">如何搭建一个自己的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85Hexo"><span class="nav-number">1.1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="nav-number">1.2.</span> <span class="nav-text">部署到github</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AA%E6%80%A7%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">个性化配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%AF%AD%E8%A8%80"><span class="nav-number">2.1.</span> <span class="nav-text">修改语言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%8F%8A%E5%88%86%E7%B1%BB"><span class="nav-number">2.2.</span> <span class="nav-text">标签及分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E5%88%87%E6%8D%A2"><span class="nav-number">2.3.</span> <span class="nav-text">主题切换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E8%97%8F%E7%BD%91%E9%A1%B5%E5%BA%95%E9%83%A8"><span class="nav-number">2.4.</span> <span class="nav-text">隐藏网页底部</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E9%98%B4%E5%BD%B1"><span class="nav-number">2.5.</span> <span class="nav-text">文章添加阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E9%A1%B5%E9%9D%A2%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E6%B5%8F%E8%A7%88%E8%BF%9B%E5%BA%A6"><span class="nav-number">2.6.</span> <span class="nav-text">浏览页面显示当前浏览进度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-Search%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2"><span class="nav-number">2.7.</span> <span class="nav-text">Local Search本地搜索</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Local-search"><span class="nav-number">2.8.</span> <span class="nav-text">Local search</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%AB%99%E5%9B%BE%E6%A0%87"><span class="nav-number">2.9.</span> <span class="nav-text">设置网站图标</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E6%A0%87%E7%AD%BE%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.</span> <span class="nav-text">评论标签实现</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#categories%E5%88%9B%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="nav-number">3.0.1.</span> <span class="nav-text">categories创建步骤</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%A4%B4%E5%83%8F"><span class="nav-number">3.1.</span> <span class="nav-text">设置头像</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%A7%E8%BE%B9%E6%A0%8F%E7%9A%84%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text">侧边栏的位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.3.</span> <span class="nav-text">文章统计</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%9B%AE%E5%BD%95"><span class="nav-number">3.4.</span> <span class="nav-text">文章目录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%A4%8D%E5%88%B6"><span class="nav-number">3.5.</span> <span class="nav-text">代码复制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%84%E7%89%88%E5%9D%97%E9%80%8F%E6%98%8E%E5%BA%A6%E4%BF%AE%E6%94%B9"><span class="nav-number">3.6.</span> <span class="nav-text">各版块透明度修改</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E6%9D%BF%E5%9D%97%E9%80%8F%E6%98%8E"><span class="nav-number">3.6.1.</span> <span class="nav-text">内容板块透明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E8%83%8C%E6%99%AF"><span class="nav-number">3.6.2.</span> <span class="nav-text">菜单栏背景</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AB%99%E7%82%B9%E6%A6%82%E5%86%B5%E8%83%8C%E6%99%AF"><span class="nav-number">3.6.3.</span> <span class="nav-text">站点概况背景</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2%E8%83%8C%E6%99%AF%E5%9B%BE%E7%89%87"><span class="nav-number">4.</span> <span class="nav-text">博客背景图片</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="szero"
+      src="/images/head.gif">
   <p class="site-author-name" itemprop="name">szero</p>
   <div class="site-description" itemprop="description">心有所向，无问东西</div>
 </div>
@@ -559,6 +603,26 @@
 -->
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
