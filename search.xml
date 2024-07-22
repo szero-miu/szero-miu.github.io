@@ -184,7 +184,25 @@
 <h3 id="博客背景图片"><a href="#博客背景图片" class="headerlink" title="博客背景图片"></a>博客背景图片</h3><p>在<code>themes/next/source/css/_custom/custom.styl</code>中添加CSS样式</p>
 <figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 背景图片</span></span><br><span class="line"><span class="selector-tag">body</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(https://背景图.jpg);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-size</span>: cover;</span><br><span class="line">    <span class="attribute">background-position</span>: <span class="number">50%</span> <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: -<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h4 id="网页显示GIF"><a href="#网页显示GIF" class="headerlink" title="网页显示GIF"></a>网页显示GIF</h4><p><strong>1. 准备 GIF 文件</strong></p>
+<p>确保你有一个 GIF 文件，并将其放在 Hexo 站点的 <code>source</code> 目录下，例如 <code>source/images/your-image.gif</code>。</p>
+<p><strong>2. 修改模板文件</strong></p>
+<p>找到你要修改的模板文件，一般来说，主页的模板文件是 <code>themes/your-theme/layout/index.ejs</code>（或者 <code>index.pug</code>、<code>index.njk</code>，具体取决于你使用的模板引擎）。</p>
+<p>在模板文件中，你需要添加一个 <code>&lt;img&gt;</code> 标签来显示 GIF，并使用 CSS 将其定位到页面的左下角。</p>
+<p><strong>3. 添加 HTML 和 CSS</strong></p>
+<p>在模板文件（如 index.html）的适当位置，添加以下代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/images/your-image.gif&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;GIF Image&quot;</span> <span class="attr">class</span>=<span class="string">&quot;gif-image&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>确保 <code>src</code> 属性的路径指向你的 GIF 文件。</p>
+<p><strong>在 CSS 文件中添加样式</strong></p>
+<p>接下来，你需要给 GIF 添加样式，以便将其定位到页面的左下角。你可以在主题的 CSS 文件中添加这些样式，例如 <code>themes/your-theme/source/css/style.css</code>，或者在 <code>&lt;head&gt;</code> 中直接添加内联样式（不推荐，但可以用于快速测试）。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.gif-image</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>; <span class="comment">/* 根据需要调整宽度 */</span></span><br><span class="line">    <span class="attribute">height</span>: auto; <span class="comment">/* 保持 GIF 的纵横比 */</span></span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">9999</span>; <span class="comment">/* 确保 GIF 显示在其他内容之上 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>生成并查看效果</strong></p>
+<p>保存模板文件和 CSS 文件，然后重新生成你的站点：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</span><br></pre></td></tr></table></figure>
+
+<p>在浏览器中访问你的 Hexo 站点，应该可以看到 GIF 插图固定在页面的左下角。</p>
 ]]></content>
       <categories>
         <category>学习</category>

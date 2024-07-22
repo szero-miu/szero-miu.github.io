@@ -1197,7 +1197,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8f7111;
+  background: #d2ff3c;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2718,4 +2718,7 @@ body {
   margin-bottom: 60px;
   -webkit-box-shadow: 0 0 5px #788072;
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+.footer-inner {
+  display: none; /* 完全移除元素及其占用空间 */
 }
