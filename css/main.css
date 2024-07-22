@@ -1197,7 +1197,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #a7c7ff;
+  background: #98557d;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2703,13 +2703,14 @@ body {
   background: rgba(255,255,255,0.7) none repeat scroll !important;
 }
 .header-inner {
-  background: rgba(255,255,255,0.6);
+  background: #fff;
 }
 .popup {
   opacity: 0.8;
 }
 .comments {
-  background: rgba(255,255,255,0.6) none repeat scroll !important;
+  background: #fff none repeat scroll !important; /* 背景色不透明 */
+  opacity: 1 !important; /* 确保不透明 */
 }
 .post {
   margin-top: 60px;
