@@ -213,6 +213,28 @@
   </entry>
   <entry>
     <title>鼠标拖尾效果</title>
+    <url>/2024/07/27/%E7%AE%97%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h3><h3 id="8-字符串转换整数"><a href="#8-字符串转换整数" class="headerlink" title="[8]字符串转换整数"></a>[8]字符串转换整数</h3><p>请你来实现一个 <code>myAtoi(string s)</code> 函数，使其能将字符串转换成一个 32 位有符号整数。</p>
+<p>函数 <code>myAtoi(string s)</code> 的算法如下：</p>
+<ol>
+<li><strong>空格：</strong>读入字符串并丢弃无用的前导空格（<code>&quot; &quot;</code>）</li>
+<li><strong>符号：</strong>检查下一个字符（假设还未到字符末尾）为 <code>&#39;-&#39;</code> 还是 <code>&#39;+&#39;</code>。如果两者都不存在，则假定结果为正。</li>
+<li><strong>转换：</strong>通过跳过前置零来读取该整数，直到遇到非数字字符或到达字符串的结尾。如果没有读取数字，则结果为0。</li>
+<li><strong>舍入：</strong>如果整数数超过 32 位有符号整数范围 <code>[−2^31, 2^31 − 1]</code> ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 <code>−2^31</code> 的整数应该被舍入为 <code>−2^31</code> ，大于 <code>2^31 − 1</code> 的整数应该被舍入为 <code>2^31 − 1</code> 。</li>
+</ol>
+<p>返回整数作为最终结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myAtoi</span>(<span class="params">s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    s = s.lstrip()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化符号变量sign，用于记录数字的正负(1表示正，-1表示负)</span></span><br><span class="line">    sign = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> s[i] == <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">        sign = -<span class="number">1</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> s[i] == <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 遍历字符串，将字符转换为整数</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> s[i].isdigit():</span><br><span class="line">        res = res * <span class="number">10</span> + <span class="built_in">int</span>(s[i])</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    res *= sign</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义32位整数的范围</span></span><br><span class="line">    INT_MIN, INT_MAX = -<span class="number">2</span>**<span class="number">31</span>, <span class="number">2</span>**<span class="number">31</span> - <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> res &lt; INT_MIN:</span><br><span class="line">        <span class="keyword">return</span> INT_MIN</span><br><span class="line">    <span class="keyword">if</span> res &gt; INT_MAX:</span><br><span class="line">        <span class="keyword">return</span> INT_MAX</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 如果结果在范围内，返回结果</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(myAtoi(<span class="string">&quot;-42&quot;</span>))</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>鼠标拖尾效果</title>
     <url>/2024/07/21/%E9%BC%A0%E6%A0%87%E6%8B%96%E5%B0%BE/</url>
     <content><![CDATA[<p>突发奇想，在学习python的时候，想要弄一个鼠标拖尾的这样一个东西，下面是我的学习思路</p>
 <h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>首先，我们要初始化</p>
@@ -261,28 +283,6 @@
       </categories>
       <tags>
         <tag>自学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>鼠标拖尾效果</title>
-    <url>/2024/07/27/%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="LeetCode"><a href="#LeetCode" class="headerlink" title="LeetCode"></a>LeetCode</h3><h3 id="8-字符串转换整数"><a href="#8-字符串转换整数" class="headerlink" title="[8]字符串转换整数"></a>[8]字符串转换整数</h3><p>请你来实现一个 <code>myAtoi(string s)</code> 函数，使其能将字符串转换成一个 32 位有符号整数。</p>
-<p>函数 <code>myAtoi(string s)</code> 的算法如下：</p>
-<ol>
-<li><strong>空格：</strong>读入字符串并丢弃无用的前导空格（<code>&quot; &quot;</code>）</li>
-<li><strong>符号：</strong>检查下一个字符（假设还未到字符末尾）为 <code>&#39;-&#39;</code> 还是 <code>&#39;+&#39;</code>。如果两者都不存在，则假定结果为正。</li>
-<li><strong>转换：</strong>通过跳过前置零来读取该整数，直到遇到非数字字符或到达字符串的结尾。如果没有读取数字，则结果为0。</li>
-<li><strong>舍入：</strong>如果整数数超过 32 位有符号整数范围 <code>[−2^31, 2^31 − 1]</code> ，需要截断这个整数，使其保持在这个范围内。具体来说，小于 <code>−2^31</code> 的整数应该被舍入为 <code>−2^31</code> ，大于 <code>2^31 − 1</code> 的整数应该被舍入为 <code>2^31 − 1</code> 。</li>
-</ol>
-<p>返回整数作为最终结果。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">myAtoi</span>(<span class="params">s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    s = s.lstrip()</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化符号变量sign，用于记录数字的正负(1表示正，-1表示负)</span></span><br><span class="line">    sign = <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> s[i] == <span class="string">&#x27;-&#x27;</span>:</span><br><span class="line">        sign = -<span class="number">1</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> s[i] == <span class="string">&#x27;+&#x27;</span>:</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 遍历字符串，将字符转换为整数</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(s) <span class="keyword">and</span> s[i].isdigit():</span><br><span class="line">        res = res * <span class="number">10</span> + <span class="built_in">int</span>(s[i])</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    res *= sign</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 定义32位整数的范围</span></span><br><span class="line">    INT_MIN, INT_MAX = -<span class="number">2</span>**<span class="number">31</span>, <span class="number">2</span>**<span class="number">31</span> - <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> res &lt; INT_MIN:</span><br><span class="line">        <span class="keyword">return</span> INT_MIN</span><br><span class="line">    <span class="keyword">if</span> res &gt; INT_MAX:</span><br><span class="line">        <span class="keyword">return</span> INT_MAX</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 如果结果在范围内，返回结果</span></span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(myAtoi(<span class="string">&quot;-42&quot;</span>))</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
       </tags>
   </entry>
 </search>
