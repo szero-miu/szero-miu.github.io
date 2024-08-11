@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="有趣的python项目，鼠标粒子效果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="鼠标拖尾效果">
+<meta property="og:url" content="http://example.com/2024/08/02/%E6%95%B0%E7%8B%AC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="有趣的python项目，鼠标粒子效果">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-02T02:23:38.009Z">
+<meta property="article:modified_time" content="2024-08-02T04:31:55.863Z">
+<meta property="article:author" content="szero">
+<meta property="article:tag" content="自学">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2024/08/02/%E6%95%B0%E7%8B%AC/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>鼠标拖尾效果 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">因为热爱，所以久远</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/08/02/%E6%95%B0%E7%8B%AC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/head.gif">
+      <meta itemprop="name" content="szero">
+      <meta itemprop="description" content="心有所向，无问东西">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          鼠标拖尾效果
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-08-02 10:23:38 / 修改时间：12:31:55" itemprop="dateCreated datePublished" datetime="2024-08-02T10:23:38+08:00">2024-08-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/08/02/%E6%95%B0%E7%8B%AC/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/08/02/%E6%95%B0%E7%8B%AC/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <div class="post-description">有趣的python项目，鼠标粒子效果</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>作为一个数独高手，用python做一个数独项目挺有意思的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 Pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置屏幕尺寸</span></span><br><span class="line">WIDTH, HEIGHT = <span class="number">720</span>, <span class="number">600</span></span><br><span class="line">GRID_SIZE = <span class="number">9</span></span><br><span class="line">CELL_SIZE = (WIDTH - <span class="number">160</span>) // GRID_SIZE  <span class="comment"># 减去颜色选择区域的宽度</span></span><br><span class="line">FONT_SIZE = CELL_SIZE // <span class="number">2</span></span><br><span class="line">BUTTON_WIDTH, BUTTON_HEIGHT = <span class="number">140</span>, <span class="number">40</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义颜色</span></span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">COLORS = [</span><br><span class="line">    (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>),    <span class="comment"># Red</span></span><br><span class="line">    (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>),    <span class="comment"># Green</span></span><br><span class="line">    (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>),    <span class="comment"># Blue</span></span><br><span class="line">    (<span class="number">255</span>, <span class="number">255</span>, <span class="number">0</span>),  <span class="comment"># Yellow</span></span><br><span class="line">    (<span class="number">0</span>, <span class="number">255</span>, <span class="number">255</span>),  <span class="comment"># Cyan</span></span><br><span class="line">    (<span class="number">255</span>, <span class="number">0</span>, <span class="number">255</span>),  <span class="comment"># Magenta</span></span><br><span class="line">    (<span class="number">192</span>, <span class="number">192</span>, <span class="number">192</span>) <span class="comment"># Gray</span></span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建屏幕</span></span><br><span class="line">screen = pygame.display.set_mode((WIDTH, HEIGHT))</span><br><span class="line">pygame.display.set_caption(<span class="string">&#x27;高难度数独&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置字体</span></span><br><span class="line">font_path = <span class="string">&quot;数独/image/AaZhuNiWoMingMeiXiangChunTian-2.ttf&quot;</span></span><br><span class="line">font = pygame.font.Font(font_path, FONT_SIZE)</span><br><span class="line">large_font = pygame.font.Font(font_path, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化游戏板</span></span><br><span class="line">board = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">int</span>)</span><br><span class="line">fixed_numbers = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">bool</span>)  <span class="comment"># 记录固定数字的位置</span></span><br><span class="line">cell_colors = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">object</span>)  <span class="comment"># 使用 np.zeros 创建对象数组</span></span><br><span class="line">selected_cell = <span class="literal">None</span></span><br><span class="line">selected_color = BLACK</span><br><span class="line"></span><br><span class="line"><span class="comment"># 变量控制提示消息</span></span><br><span class="line">message = <span class="string">&quot;&quot;</span></span><br><span class="line">message_color = BLACK</span><br><span class="line">message_display_time = <span class="number">0</span>  <span class="comment"># 记录消息显示时间</span></span><br><span class="line">MESSAGE_DURATION = <span class="number">2</span>  <span class="comment"># 消息显示持续时间，单位为秒</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化 cell_colors 为 BLACK</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">        cell_colors[i][j] = BLACK</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_grid</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制数独网格和初始数字&quot;&quot;&quot;</span></span><br><span class="line">    screen.fill(WHITE)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 绘制数独网格</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, WIDTH - <span class="number">160</span>, CELL_SIZE):</span><br><span class="line">        pygame.draw.line(screen, BLACK, (x, <span class="number">0</span>), (x, HEIGHT - <span class="number">60</span>), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, HEIGHT - <span class="number">60</span>, CELL_SIZE):</span><br><span class="line">        pygame.draw.line(screen, BLACK, (<span class="number">0</span>, y), (WIDTH - <span class="number">160</span>, y), <span class="number">2</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 绘制粗线以分隔 3x3 区域</span></span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, WIDTH - <span class="number">160</span>, <span class="number">3</span> * CELL_SIZE):</span><br><span class="line">        pygame.draw.line(screen, BLACK, (x, <span class="number">0</span>), (x, HEIGHT - <span class="number">60</span>), <span class="number">4</span>)</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, HEIGHT - <span class="number">60</span>, <span class="number">3</span> * CELL_SIZE):</span><br><span class="line">        pygame.draw.line(screen, BLACK, (<span class="number">0</span>, y), (WIDTH - <span class="number">160</span>, y), <span class="number">4</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_numbers</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制数独数字&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">            num = board[i][j]</span><br><span class="line">            <span class="keyword">if</span> num != <span class="number">0</span>:</span><br><span class="line">                color = cell_colors[i][j]</span><br><span class="line">                text = font.render(<span class="built_in">str</span>(num), <span class="literal">True</span>, color)</span><br><span class="line">                text_rect = text.get_rect(center=(j * CELL_SIZE + CELL_SIZE // <span class="number">2</span>, i * CELL_SIZE + CELL_SIZE // <span class="number">2</span>))</span><br><span class="line">                screen.blit(text, text_rect)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_color_palette</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制颜色选择区域&quot;&quot;&quot;</span></span><br><span class="line">    color_width = <span class="number">160</span></span><br><span class="line">    color_height = (HEIGHT - BUTTON_HEIGHT) // (<span class="built_in">len</span>(COLORS) + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i, color <span class="keyword">in</span> <span class="built_in">enumerate</span>(COLORS):</span><br><span class="line">        pygame.draw.rect(screen, color, (WIDTH - color_width, i * color_height, color_width, color_height))</span><br><span class="line">        pygame.draw.rect(screen, BLACK, (WIDTH - color_width, i * color_height, color_width, color_height), <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_submit_button</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制提交按钮&quot;&quot;&quot;</span></span><br><span class="line">    button_x = WIDTH - <span class="number">160</span> + (<span class="number">160</span> - BUTTON_WIDTH) // <span class="number">2</span></span><br><span class="line">    button_y = HEIGHT - BUTTON_HEIGHT - <span class="number">20</span></span><br><span class="line">    pygame.draw.rect(screen, (<span class="number">0</span>, <span class="number">128</span>, <span class="number">0</span>), (button_x, button_y, BUTTON_WIDTH, BUTTON_HEIGHT))</span><br><span class="line">    pygame.draw.rect(screen, BLACK, (button_x, button_y, BUTTON_WIDTH, BUTTON_HEIGHT), <span class="number">2</span>)</span><br><span class="line">    text = large_font.render(<span class="string">&#x27;ENTER&#x27;</span>, <span class="literal">True</span>, WHITE)</span><br><span class="line">    text_rect = text.get_rect(center=(button_x + BUTTON_WIDTH // <span class="number">2</span>, button_y + BUTTON_HEIGHT // <span class="number">2</span>))</span><br><span class="line">    screen.blit(text, text_rect)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_message</span>(<span class="params">message, color</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;绘制提示信息&quot;&quot;&quot;</span></span><br><span class="line">    text = large_font.render(message, <span class="literal">True</span>, color)</span><br><span class="line">    text_rect = text.get_rect(center=(WIDTH // <span class="number">2</span>, HEIGHT // <span class="number">2</span>))</span><br><span class="line">    screen.blit(text, text_rect)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">is_valid_sudoku</span>(<span class="params">board</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;检查数独解的正确性&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_valid_group</span>(<span class="params">group</span>):</span><br><span class="line">        <span class="comment"># 只考虑不为零的数字</span></span><br><span class="line">        group = [num <span class="keyword">for</span> num <span class="keyword">in</span> group <span class="keyword">if</span> num != <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">len</span>(<span class="built_in">set</span>(group)) == <span class="built_in">len</span>(group)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检查行和列</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> is_valid_group(board[i, :]) <span class="keyword">or</span> <span class="keyword">not</span> is_valid_group(board[:, i]):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检查 3x3 区域</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, GRID_SIZE, <span class="number">3</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, GRID_SIZE, <span class="number">3</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> is_valid_group(board[i:i + <span class="number">3</span>, j:j + <span class="number">3</span>].flatten()):</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">generate_sudoku</span>():</span><br><span class="line">    <span class="string">&quot;&quot;&quot;生成一个高难度的数独&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># 创建一个数独解的空板</span></span><br><span class="line">    board = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_valid</span>(<span class="params">board, row, col, num</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;检查数字是否有效&quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># 检查行</span></span><br><span class="line">        <span class="keyword">if</span> num <span class="keyword">in</span> board[row]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 检查列</span></span><br><span class="line">        <span class="keyword">if</span> num <span class="keyword">in</span> board[:, col]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="comment"># 检查 3x3 区域</span></span><br><span class="line">        start_row, start_col = <span class="number">3</span> * (row // <span class="number">3</span>), <span class="number">3</span> * (col // <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">if</span> num <span class="keyword">in</span> board[start_row:start_row + <span class="number">3</span>, start_col:start_col + <span class="number">3</span>]:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">board</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;解决数独&quot;&quot;&quot;</span></span><br><span class="line">        empty = np.argwhere(board == <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">len</span>(empty):</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">        row, col = empty[<span class="number">0</span>]</span><br><span class="line">        numbers = <span class="built_in">list</span>(<span class="built_in">range</span>(<span class="number">1</span>, <span class="number">10</span>))</span><br><span class="line">        random.shuffle(numbers)</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> numbers:</span><br><span class="line">            <span class="keyword">if</span> is_valid(board, row, col, num):</span><br><span class="line">                board[row][col] = num</span><br><span class="line">                <span class="keyword">if</span> solve(board):</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                board[row][col] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 填充数独板</span></span><br><span class="line">    solve(board)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 随机去掉一些数字以增加难度</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">40</span>):</span><br><span class="line">        row, col = random.randint(<span class="number">0</span>, <span class="number">8</span>), random.randint(<span class="number">0</span>, <span class="number">8</span>)</span><br><span class="line">        board[row][col] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 标记固定数字的位置</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">            <span class="keyword">if</span> board[i][j] != <span class="number">0</span>:</span><br><span class="line">                fixed_numbers[i, j] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> board</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="keyword">global</span> board, selected_cell, selected_color, cell_colors, message, message_color, message_display_time</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 生成数独棋盘</span></span><br><span class="line">    board = generate_sudoku()</span><br><span class="line">    selected_cell = <span class="literal">None</span></span><br><span class="line">    selected_color = BLACK</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取按钮区域的坐标和尺寸</span></span><br><span class="line">    button_x = WIDTH - <span class="number">160</span> + (<span class="number">160</span> - BUTTON_WIDTH) // <span class="number">2</span></span><br><span class="line">    button_y = HEIGHT - BUTTON_HEIGHT - <span class="number">20</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 游戏主循环</span></span><br><span class="line">    running = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">while</span> running:</span><br><span class="line">        current_time = time.time()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                running = <span class="literal">False</span></span><br><span class="line">            <span class="keyword">elif</span> event.<span class="built_in">type</span> == pygame.MOUSEBUTTONDOWN:</span><br><span class="line">                x, y = pygame.mouse.get_pos()</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 检测是否点击了颜色选择区域</span></span><br><span class="line">                <span class="keyword">if</span> x &gt;= WIDTH - <span class="number">160</span>:</span><br><span class="line">                    color_index = y // ((HEIGHT - BUTTON_HEIGHT) // (<span class="built_in">len</span>(COLORS) + <span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">if</span> <span class="number">0</span> &lt;= color_index &lt; <span class="built_in">len</span>(COLORS):</span><br><span class="line">                        selected_color = COLORS[color_index]</span><br><span class="line">                <span class="comment"># 检测是否点击了数独网格</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    row, col = y // CELL_SIZE, x // CELL_SIZE</span><br><span class="line">                    <span class="keyword">if</span> row &lt; GRID_SIZE <span class="keyword">and</span> col &lt; GRID_SIZE:</span><br><span class="line">                        selected_cell = (row, col)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_RETURN:</span><br><span class="line">                    <span class="comment"># 确认操作，按下 ENTER 键时检查数独的正确性</span></span><br><span class="line">                    <span class="keyword">if</span> is_valid_sudoku(board):</span><br><span class="line">                        message = <span class="string">&quot;成功！&quot;</span></span><br><span class="line">                        message_color = (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)  <span class="comment"># 绿色</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        message = <span class="string">&quot;失败！&quot;</span></span><br><span class="line">                        message_color = (<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>)  <span class="comment"># 红色</span></span><br><span class="line">                    message_display_time = current_time</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_ESCAPE:</span><br><span class="line">                    running = <span class="literal">False</span></span><br><span class="line">                <span class="keyword">elif</span> selected_cell:</span><br><span class="line">                    row, col = selected_cell</span><br><span class="line">                    <span class="keyword">if</span> event.key == pygame.K_BACKSPACE:</span><br><span class="line">                        <span class="comment"># 删除数字</span></span><br><span class="line">                        board[row][col] = <span class="number">0</span></span><br><span class="line">                        cell_colors[row][col] = BLACK</span><br><span class="line">                    <span class="keyword">elif</span> <span class="number">0</span> &lt;= event.key - pygame.K_0 &lt;= <span class="number">9</span>:</span><br><span class="line">                        num = event.key - pygame.K_0</span><br><span class="line">                        <span class="keyword">if</span> board[row][col] == <span class="number">0</span>:  <span class="comment"># 只允许填入空单元格</span></span><br><span class="line">                            board[row][col] = num</span><br><span class="line">                            cell_colors[row][col] = selected_color  <span class="comment"># 设置单元格颜色</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 清屏并绘制网格和数字</span></span><br><span class="line">        draw_grid()</span><br><span class="line">        draw_numbers()</span><br><span class="line">        draw_color_palette()</span><br><span class="line">        draw_submit_button()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 绘制提示信息</span></span><br><span class="line">        <span class="keyword">if</span> message <span class="keyword">and</span> (current_time - message_display_time &lt; MESSAGE_DURATION):</span><br><span class="line">            draw_message(message, message_color)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 刷新屏幕</span></span><br><span class="line">        pygame.display.flip()</span><br><span class="line"></span><br><span class="line">    pygame.quit()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>数独都有了，那么解决数独的代码也该有了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pygame</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># 初始化pygame</span></span><br><span class="line">pygame.init()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 窗口设置</span></span><br><span class="line">WINDOW_SIZE = <span class="number">540</span></span><br><span class="line">GRID_SIZE = <span class="number">9</span></span><br><span class="line">CELL_SIZE = WINDOW_SIZE // GRID_SIZE</span><br><span class="line">WHITE = (<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>)</span><br><span class="line">BLACK = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">GRAY = (<span class="number">200</span>, <span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">BLUE = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建窗口</span></span><br><span class="line">window = pygame.display.set_mode((WINDOW_SIZE, WINDOW_SIZE))</span><br><span class="line">pygame.display.set_caption(<span class="string">&#x27;Sudoku Solver&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载字体</span></span><br><span class="line">font = pygame.font.Font(<span class="literal">None</span>, <span class="number">50</span>)</span><br><span class="line">input_font = pygame.font.Font(<span class="literal">None</span>, <span class="number">30</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数独解决器</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve_sudoku</span>(<span class="params">board</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">is_valid</span>(<span class="params">board, row, col, num</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">            <span class="keyword">if</span> board[row][i] == num <span class="keyword">or</span> board[i][col] == num:</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        start_row, start_col = <span class="number">3</span> * (row // <span class="number">3</span>), <span class="number">3</span> * (col // <span class="number">3</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(start_row, start_row + <span class="number">3</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(start_col, start_col + <span class="number">3</span>):</span><br><span class="line">                <span class="keyword">if</span> board[i][j] == num:</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">solve</span>(<span class="params">board</span>):</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">            <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">                <span class="keyword">if</span> board[row][col] == <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, GRID_SIZE + <span class="number">1</span>):</span><br><span class="line">                        <span class="keyword">if</span> is_valid(board, row, col, num):</span><br><span class="line">                            board[row][col] = num</span><br><span class="line">                            <span class="keyword">if</span> solve(board):</span><br><span class="line">                                <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">                            board[row][col] = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> solve(board):</span><br><span class="line">        <span class="keyword">return</span> board</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制网格和数字</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_grid</span>(<span class="params">board, input_text=<span class="literal">None</span></span>):</span><br><span class="line">    window.fill(WHITE)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE + <span class="number">1</span>):</span><br><span class="line">        pygame.draw.line(window, BLACK, (<span class="number">0</span>, i * CELL_SIZE), (WINDOW_SIZE, i * CELL_SIZE), <span class="number">2</span>)</span><br><span class="line">        pygame.draw.line(window, BLACK, (i * CELL_SIZE, <span class="number">0</span>), (i * CELL_SIZE, WINDOW_SIZE), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">range</span>(GRID_SIZE):</span><br><span class="line">            num = board[row][col]</span><br><span class="line">            <span class="keyword">if</span> num != <span class="number">0</span>:</span><br><span class="line">                text = font.render(<span class="built_in">str</span>(num), <span class="literal">True</span>, BLACK)</span><br><span class="line">                window.blit(text, (col * CELL_SIZE + CELL_SIZE // <span class="number">4</span>, row * CELL_SIZE + CELL_SIZE // <span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> input_text:</span><br><span class="line">        <span class="comment"># 绘制输入文本框</span></span><br><span class="line">        pygame.draw.rect(window, BLUE, (<span class="number">0</span>, WINDOW_SIZE - <span class="number">50</span>, WINDOW_SIZE, <span class="number">50</span>))</span><br><span class="line">        text_surface = input_font.render(input_text, <span class="literal">True</span>, WHITE)</span><br><span class="line">        window.blit(text_surface, (<span class="number">10</span>, WINDOW_SIZE - <span class="number">40</span>))</span><br><span class="line">    </span><br><span class="line">    pygame.display.update()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    board = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">int</span>)</span><br><span class="line">    input_text = <span class="string">&quot;&quot;</span></span><br><span class="line">    active_cell = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        draw_grid(board, input_text)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> event <span class="keyword">in</span> pygame.event.get():</span><br><span class="line">            <span class="keyword">if</span> event.<span class="built_in">type</span> == pygame.QUIT:</span><br><span class="line">                pygame.quit()</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">elif</span> event.<span class="built_in">type</span> == pygame.KEYDOWN:</span><br><span class="line">                <span class="keyword">if</span> event.key == pygame.K_RETURN:</span><br><span class="line">                    solved_board = solve_sudoku(board.copy())</span><br><span class="line">                    <span class="keyword">if</span> solved_board <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">                        <span class="built_in">print</span>(<span class="string">&quot;No solution exists&quot;</span>)</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        board = solved_board</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_BACKSPACE:</span><br><span class="line">                    board = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">int</span>)</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_c:</span><br><span class="line">                    board = np.zeros((GRID_SIZE, GRID_SIZE), dtype=<span class="built_in">int</span>)</span><br><span class="line">                <span class="keyword">elif</span> event.key <span class="keyword">in</span> <span class="built_in">range</span>(pygame.K_1, pygame.K_9 + <span class="number">1</span>):</span><br><span class="line">                    num = event.key - pygame.K_0</span><br><span class="line">                    <span class="keyword">if</span> active_cell:</span><br><span class="line">                        row, col = active_cell</span><br><span class="line">                        board[row][col] = num</span><br><span class="line">                <span class="keyword">elif</span> event.key == pygame.K_ESCAPE:</span><br><span class="line">                    input_text = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> event.<span class="built_in">type</span> == pygame.MOUSEBUTTONDOWN:</span><br><span class="line">                pos = pygame.mouse.get_pos()</span><br><span class="line">                row, col = pos[<span class="number">1</span>] // CELL_SIZE, pos[<span class="number">0</span>] // CELL_SIZE</span><br><span class="line">                <span class="keyword">if</span> event.button == <span class="number">1</span>:  <span class="comment"># Left click</span></span><br><span class="line">                    active_cell = (row, col)</span><br><span class="line">                    input_text = <span class="string">&quot;&quot;</span></span><br><span class="line">                <span class="keyword">elif</span> event.button == <span class="number">3</span>:  <span class="comment"># Right click</span></span><br><span class="line">                    board[row][col] = <span class="number">0</span></span><br><span class="line">                    active_cell = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">elif</span> event.<span class="built_in">type</span> == pygame.TEXTINPUT:</span><br><span class="line">                <span class="keyword">if</span> active_cell:</span><br><span class="line">                    input_text += event.text</span><br><span class="line">                    <span class="keyword">if</span> <span class="built_in">len</span>(input_text) &gt; <span class="number">1</span>:</span><br><span class="line">                        input_text = input_text[-<span class="number">1</span>]</span><br><span class="line">                    <span class="keyword">if</span> input_text.isdigit() <span class="keyword">and</span> <span class="number">1</span> &lt;= <span class="built_in">int</span>(input_text) &lt;= <span class="number">9</span>:</span><br><span class="line">                        row, col = active_cell</span><br><span class="line">                        board[row][col] = <span class="built_in">int</span>(input_text)</span><br><span class="line">                        input_text = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        pygame.display.update()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%87%AA%E5%AD%A6/" rel="tag"># 自学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/07/27/%E7%AE%97%E6%B3%95/" rel="prev" title="鼠标拖尾效果">
+      <i class="fa fa-chevron-left"></i> 鼠标拖尾效果
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/08/11/python/" rel="next" title="">
+       <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="szero"
+      src="/images/head.gif">
+  <p class="site-author-name" itemprop="name">szero</p>
+  <div class="site-description" itemprop="description">心有所向，无问东西</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+<!--
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">szero</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+-->
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'BifI16ck021l00xqW9P836Xz-gzGzoHsz',
+      appKey     : 'EPdHq7Z85yX21YIdtAg9WaW2',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
