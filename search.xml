@@ -212,6 +212,130 @@
       </tags>
   </entry>
   <entry>
+    <title>逆向知识点</title>
+    <url>/2024/10/18/Crackme/</url>
+    <content><![CDATA[<p><strong>下载工具</strong></p>
+<p>ollydbg简称OD，这个我用的比较多，毕竟接触的比较多嘛，你可以在吾爱破解网站进行下载，非常方便的，吾爱破解上也有关于解决crackme的题，挺详细的可以看看。</p>
+<p>Visual Basic因为前面做的题大部分都是Delphi程序，就是用VB编译制成的，所以我们需要下载VB才能运行不然会有一些文件会报错的。</p>
+<p>Peid 一款著名的查壳工具</p>
+<p><strong>做题网址</strong></p>
+<p><a href="https://crackmes.one/">https://crackmes.one/</a></p>
+<p>首先呢，我们需要了解OD的每个窗口是什么，如图</p>
+<p><img src="https://s2.loli.net/2024/10/18/o75Q9h3OcgfvuXA.png" alt="image-20241017012646257.png"></p>
+<ul>
+<li>反汇编窗口：显示被调试程序的反汇编代码，包括地址、HEX数据、反汇编、注释</li>
+<li>寄存器窗口：显示当前所选线程的CPU寄存器内容，点击标签可切换显示寄存器的方式</li>
+<li>信息窗口：显示反汇编窗口中选中的第一个命令的参数及跳转目标地址、字符等</li>
+<li>数据窗口：显示内存或文件的内容，右键菜单可切换显示方式</li>
+<li>堆栈窗口：显示当前线程的堆栈</li>
+</ul>
+<p><strong>F2</strong> </p>
+<p>设置断点，如下图所示的红色位置，程序运行到此处会暂停，再按一次F2键会删除断点</p>
+<p><strong>F9</strong></p>
+<p>按下这个键运行程序，如果没有设置相应的点，被调试的程序直接开始运行。</p>
+<p><strong>F8</strong></p>
+<p>单步步过，每按一次这个按键，将执行反汇编窗口中的一条指令，遇到CALL等子程序不进入其代码。</p>
+<p><strong>F7</strong> </p>
+<p>单步步入，功能通单步步过（F8）类似，区别是遇到CALL等子程序时会进入其中，进入后首先停留在子程序的第一条指令上。如下图进入CALL子程序。</p>
+<p><strong>F4</strong> </p>
+<p>运行到选定位置，即运行到光标所在位置处暂停。</p>
+<p><strong>CTRL+F9</strong> </p>
+<p>执行到返回，按下此键会执行到一个返回指令时暂停，常用于从系统领空返回到我们调试的程序领空。</p>
+<p><strong>ALT+F9</strong></p>
+<p>执行到用户代码，从系统领空快速返回我们调试的程序领空。</p>
+<h3 id="crackme1-Acid-burn"><a href="#crackme1-Acid-burn" class="headerlink" title="crackme1:Acid burn"></a>crackme1:Acid burn</h3><p>第一道题呢，我是根据了解到的信息，大部分都是从Acid burn开始的，毕竟我也是刚学习嘛，就跟着他们走了，毕竟教程比较详细哦。</p>
+<p>我们先用peid打开我们下载好的exe文件</p>
+<p><img src="https://s2.loli.net/2024/10/18/OdjYUBNqi1GywoT.png" alt="image-20241016092817303.png"></p>
+<p>是32位的Delphi程序</p>
+<p>运行之后弹出如下界面</p>
+<p><img src="https://s2.loli.net/2024/10/18/kECFAovtOJQldwG.png" alt="image-20241017020247005.png"></p>
+<p>左边要求输入是用户名和序列号，而右边仅仅要求输入序列号</p>
+<p><img src="https://s2.loli.net/2024/10/18/lwybHN4q56dmR9j.png" alt="image-20241017014429251.png"></p>
+<p><img src="https://s2.loli.net/2024/10/18/QfrC6KF89zg5hx1.png" alt="image-20241017014729116.png"></p>
+<p><img src="https://s2.loli.net/2024/10/18/hBZVolvQ9NnmjA4.png" alt="image-20241017020318355.png"></p>
+<p>先从较为简单的序列号入手，在反汇编窗口右键选择<strong>中文引擎搜索</strong>一栏中的<strong>智能搜索</strong>，找到之前的错误信息“Try Again！！”，发现有三个，依次点进去查看</p>
+<p>查找文本-&gt;搜索Try Again</p>
+<p><img src="https://s2.loli.net/2024/10/18/b6iFHAauPo8ETtj.png" alt="image-20241017020705303.png"></p>
+<p>定位到第一个try again，发现在错误信息之上便是成功的信息</p>
+<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20241017020823147.png" alt="image-20241017020823147"></p>
+<p><em>*<em>JNZ</em>（或JNE，jump if not zero, or not equal），是汇编语言中的条件转移*指令</em>，结果不为零（或不相等）则转移。**</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0042F4D5  |. /75 1A         jnz short Acid_bur.0042F4F1         ;//这一行是为了判断上一个操作的结果。如果结果不是0，则跳转到 0042F4F1，否则继续执行下面的代码。</span><br><span class="line">0042F4D7  |. |6A 00         push 0x0						  ;//将立即数 0x0（值为0）压入栈中。push 指令将数据压入栈顶，以供后续函数调用使用。</span><br><span class="line">0042F4D9  |. |B9 64F54200   mov ecx,Acid_bur.0042F564                ;  Congratz!</span><br><span class="line">0042F4DE  |. |BA 70F54200   mov edx,Acid_bur.0042F570                ;  God Job dude !! =)</span><br><span class="line">0042F4E3  |. |A1 480A4300   mov eax,dword ptr ds:[0x430A48]		;//从内存地址 0x430A48 处读取一个32位（4字节）的值，并存入寄存器 eax 中。</span><br><span class="line">0042F4E8  |. |8B00          mov eax,dword ptr ds:[eax]			;//再从 eax 寄存器指向的内存地址中读取一个32位值，并将其存回 eax 中。</span><br><span class="line">0042F4EA  |. |E8 81ACFFFF   call Acid_bur.0042A170</span><br><span class="line">0042F4EF  |. |EB 18         jmp short Acid_bur.0042F509			;//无条件跳转到地址 0042F509</span><br><span class="line">0042F4F1  |&gt; \6A 00         push 0x0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>那么想要跳过这个错误提示信息则需要将 0042F803处的JNZ给nop掉。nop掉后F9让程序跑起来，然后重新点击【Check it Baby!】。OD中继续在MessageBox处中断了。</p>
+<p><strong>NOP（No Operation）</strong> 是一种“空操作”指令，执行时什么也不做。如果你把 <code>JNZ</code> 替换为 <code>NOP</code>，则无论条件是否成立，程序都会继续向下执行，而不会跳转到错误处理代码。这样可以绕过错误提示</p>
+<p><img src="https://s2.loli.net/2024/10/18/WqKYuVxh8D7ykwB.png" alt="image-20241017021824173.png"></p>
+<p><img src="/./C:/Users/25373/AppData/Roaming/Typora/typora-user-images/image-20241017021839813.png" alt="image-20241017021839813"></p>
+<p>运行之后发现是serial的破解</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a45762b65.png" alt="image-20241017023432683.png"></p>
+<p>同理，找到下一个“good job dude”</p>
+<p><img src="https://s2.loli.net/2024/10/18/huFPdogO7GfM34Q.png" alt="image-20241017020823147.png"></p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a40d3350c.png" alt="image-20241017025519846.png"></p>
+<p>如何保存文件呢</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a49d022de.png" alt="image-20241017023524828.png"></p>
+<h4 id="注册码"><a href="#注册码" class="headerlink" title="注册码"></a>注册码</h4><p>然后可以想到在这之上应该会有个函数接收用户输入的序列号和正确的序列号比较，于是我们再往上找，找到过程的起点设置断点。</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a4b61fade.png" alt="image-20241017030312417.png"></p>
+<p>按F9运行程序，点击确定后，点击右侧按钮，然后点击check it.程序运行到到断点处停下。按F8单步运行。前面几行代码建立栈帧并将eax置零。之后将Hello与Dude字符串中间加个空格然后拼接成Hello Dude。</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a4c7a27e4.png" alt="image-20241017031239752.png"></p>
+<p>此时栈中的情况如下：</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a4db1fb42.png" alt="image-20241017031440608.png"></p>
+<p>接着运行到下图位置：</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a50ba8107.png" alt="6711a4ed9a351[1].png"></p>
+<p>这两行代码将局部变量3、4分别传给edx和eax，然后调用了一个过程。到栈窗口中查看发现这两个局部变量分别为我们输入的和Hello Dude，这为两个参数，调用函数之后便紧跟跳转语句，再之后便是成功信息和正确信息。可以猜测Hello Dude!为正确的序列号。经过验证可以发现正确。</p>
+<p>接着分析第二个try again.定位到其位置,往上找，找到过程的起点设置断点，并将程序运行到断点。</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a5251ca01.png" alt="image-20241017031930797.png"></p>
+<p>之后按F8单步运行，之后的代码是一系列计算，先不管它，往下找，直到出现分支。</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a5363b475.png" alt="image-20241017032227891.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0042FA57  |.  83F8 04       cmp eax,0x4							;//cmp eax, 0x4：比较 eax 寄存器的值与 0x4</span><br><span class="line">0042FA5A  |.  7D 1D         jge short Acid_bur.0042FA79			;//条件跳转指令，&quot;Jump if Greater or Equal&quot;。如果 eax 的值大于或等于 4，则跳转到地址 0042FA79</span><br><span class="line">0042FA5C  |.  6A 00         push 0x0</span><br><span class="line">0042FA5E  |.  B9 74FB4200   mov ecx,Acid_bur.0042FB74                ;  Try Again!</span><br><span class="line">0042FA63  |.  BA 80FB4200   mov edx,Acid_bur.0042FB80                ;  Sorry , The serial is incorect !</span><br><span class="line">0042FA68  |.  A1 480A4300   mov eax,dword ptr ds:[0x430A48]			;//从地址 0x430A48 中读取一个32位的值，并存入 eax</span><br><span class="line">0042FA6D  |.  8B00          mov eax,dword ptr ds:[eax]				;//从 eax 寄存器指向的内存地址读取值，并将其存回 eax</span><br><span class="line">0042FA6F  |.  E8 FCA6FFFF   call Acid_bur.0042A170</span><br><span class="line">0042FA74  |.  E9 BE000000   jmp Acid_bur.0042FB37					;//无条件跳转到地址 0042FB37</span><br><span class="line">0042FA79  |&gt;  8D55 F0       lea edx,[local.4]						;//加载地址 local.4 的地址到 edx 中</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> <code>eax</code> 的值小于 <code>4</code>，则会向用户显示错误信息并提示重新尝试；否则，代码会继续执行到后续部分。</p>
+<p>发现是与4比较，之上的函数调用前将输入的name传入，返回的eax为0x19，恰好为字符串的长度，说明这是在判断长度是否大于等于4</p>
+<p>那么第三个try again对应的应该是name&#x2F;serial，猜想大致是利用输入的用户名计算序列号然后和输入的序列号对比，判断是否正确。</p>
+<p>serial计算的简单分析</p>
+<p>在之前发现的判断字符串长度是否大于等于4的后方设置断点，单步运行</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a549f15a3.png" alt="image-20241017033559424.png"></p>
+<p>第一位取出，乘以一个常量0x29，然后再与自己本身相加（相当于乘以2），得到0FB2，存放在0x431750处。之后是将CW、-、CRACKED放入栈.</p>
+<p>接着往下看，可以发现最后产生了如下结果：</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a55e6f2ef.png" alt="image-20241017033856932.png"></p>
+<p>0019F620   023DE5A8  ASCII “CW-4018-CRACKED”</p>
+<p>CW-4018-CRACKED就是正确的序列哦</p>
+<h4 id="去掉烦人的提示对话框"><a href="#去掉烦人的提示对话框" class="headerlink" title="去掉烦人的提示对话框"></a>去掉烦人的提示对话框</h4><p>去掉烦人的提示对话框（一般软件设计者用来提醒用户购买正式版本的窗口），要完全去除提示窗口，只需要找到创建该窗口的代码并将其跳过。显示窗口的常用函数有：</p>
+<ul>
+<li>MessageBoxA(W)</li>
+<li>MessageBoxExA(W)</li>
+<li>DialogBoxParamA(W)</li>
+<li>ShowWindow</li>
+<li>CreateWindowExA(W)</li>
+</ul>
+<p>OD打开之后，用Ctrl+G跳转到上面常用函数处，然后按下F2键下断点</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a56f685b1.png" alt="image-20241017130225745.png"></p>
+<p>在MessageBoxA处下断点<img src="https://free2.yunpng.top/2024/10/18/6711a57f8ad78.png" alt="image-20241017130329012.png"></p>
+<p>下完断点后，我们按下F9让程序运行起来，会发现程序在函数MessageBoxA处断下，观察栈区，会发现就是我们要去除的窗口信息，即此时MessageBoxA函数执行完，就会弹出提示窗口信息</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a597dfd6f.png" alt="image-20241017130642411.png"></p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a5a75b54a.png" alt="image-20241017131033880.png"></p>
+<p>本来我们只要nop掉调用MessageBoxA的代码就可以实现目标一，不过后面验证后的结果提示窗口也会调用此处，所以我们还要继续往上找。</p>
+<p>（图找的是吾爱破解里的，因为懒的加注释了，这里挺详细的。）</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a5ba6f728.png" alt="image-20241017131646549.png"></p>
+<p>终于来到最终的关键处，此时我们采用第二种，直接将push 0x0改为retn</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a5cb939a6.png" alt="image-20241017132140992.png"></p>
+<p>此时运行的时候就没有弹窗啦</p>
+<h4 id="将英文改成中文"><a href="#将英文改成中文" class="headerlink" title="将英文改成中文"></a>将英文改成中文</h4><p>改中文，右键汇编窗口，数据窗口跟随，立即数</p>
+<p><img src="https://free2.yunpng.top/2024/10/18/6711a5dd87a0d.png" alt="image-20241018064005935.png"></p>
+<p>在数据窗口选中对应的数据进行二进制编辑</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello you have to kill me</span><br><span class="line">你好，你必须杀了我</span><br><span class="line">Welcome to this Newbies Crackmemade by ACiD BuRN [CracKerWoRlD]</span><br><span class="line">欢迎来到这个由ACiD BuRN [CracKerWoRlD]制作的Newbies Crackmemade</span><br><span class="line">.......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>根据自己的翻译能力进行修改成合适自己的</p>
+<p><img src="https://s2.loli.net/2024/10/18/2MQD3ozKby7jdRU.png" alt="image-20241018073227428.png"><br><img src="https://s2.loli.net/2024/10/18/aeMLRcT1FjEzH9I.png" alt="image-20241018073200575.png"></p>
+<p>目前就到这里</p>
+<p>后面如果会了解到其他知识的话会从第一题开始尝试修改的，毕竟学习永无止境</p>
+]]></content>
+      <categories>
+        <category>逆向自学</category>
+      </categories>
+      <tags>
+        <tag>自学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>python知识点</title>
     <url>/2024/08/11/python/</url>
     <content><![CDATA[<h1 id="python-learn"><a href="#python-learn" class="headerlink" title="python-learn"></a>python-learn</h1><p>学习视频：b站搜求知讲堂python+人工智能</p>
@@ -541,130 +665,6 @@
 ]]></content>
       <categories>
         <category>python学习</category>
-      </categories>
-      <tags>
-        <tag>自学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>逆向知识点</title>
-    <url>/2024/10/18/Crackme/</url>
-    <content><![CDATA[<p><strong>下载工具</strong></p>
-<p>ollydbg简称OD，这个我用的比较多，毕竟接触的比较多嘛，你可以在吾爱破解网站进行下载，非常方便的，吾爱破解上也有关于解决crackme的题，挺详细的可以看看。</p>
-<p>Visual Basic因为前面做的题大部分都是Delphi程序，就是用VB编译制成的，所以我们需要下载VB才能运行不然会有一些文件会报错的。</p>
-<p>Peid 一款著名的查壳工具</p>
-<p><strong>做题网址</strong></p>
-<p><a href="https://crackmes.one/">https://crackmes.one/</a></p>
-<p>首先呢，我们需要了解OD的每个窗口是什么，如图</p>
-<p><img src="https://s2.loli.net/2024/10/18/o75Q9h3OcgfvuXA.png" alt="image-20241017012646257.png"></p>
-<ul>
-<li>反汇编窗口：显示被调试程序的反汇编代码，包括地址、HEX数据、反汇编、注释</li>
-<li>寄存器窗口：显示当前所选线程的CPU寄存器内容，点击标签可切换显示寄存器的方式</li>
-<li>信息窗口：显示反汇编窗口中选中的第一个命令的参数及跳转目标地址、字符等</li>
-<li>数据窗口：显示内存或文件的内容，右键菜单可切换显示方式</li>
-<li>堆栈窗口：显示当前线程的堆栈</li>
-</ul>
-<p><strong>F2</strong> </p>
-<p>设置断点，如下图所示的红色位置，程序运行到此处会暂停，再按一次F2键会删除断点</p>
-<p><strong>F9</strong></p>
-<p>按下这个键运行程序，如果没有设置相应的点，被调试的程序直接开始运行。</p>
-<p><strong>F8</strong></p>
-<p>单步步过，每按一次这个按键，将执行反汇编窗口中的一条指令，遇到CALL等子程序不进入其代码。</p>
-<p><strong>F7</strong> </p>
-<p>单步步入，功能通单步步过（F8）类似，区别是遇到CALL等子程序时会进入其中，进入后首先停留在子程序的第一条指令上。如下图进入CALL子程序。</p>
-<p><strong>F4</strong> </p>
-<p>运行到选定位置，即运行到光标所在位置处暂停。</p>
-<p><strong>CTRL+F9</strong> </p>
-<p>执行到返回，按下此键会执行到一个返回指令时暂停，常用于从系统领空返回到我们调试的程序领空。</p>
-<p><strong>ALT+F9</strong></p>
-<p>执行到用户代码，从系统领空快速返回我们调试的程序领空。</p>
-<h3 id="crackme1-Acid-burn"><a href="#crackme1-Acid-burn" class="headerlink" title="crackme1:Acid burn"></a>crackme1:Acid burn</h3><p>第一道题呢，我是根据了解到的信息，大部分都是从Acid burn开始的，毕竟我也是刚学习嘛，就跟着他们走了，毕竟教程比较详细哦。</p>
-<p>我们先用peid打开我们下载好的exe文件</p>
-<p><img src="https://s2.loli.net/2024/10/18/OdjYUBNqi1GywoT.png" alt="image-20241016092817303.png"></p>
-<p>是32位的Delphi程序</p>
-<p>运行之后弹出如下界面</p>
-<p><img src="https://s2.loli.net/2024/10/18/kECFAovtOJQldwG.png" alt="image-20241017020247005.png"></p>
-<p>左边要求输入是用户名和序列号，而右边仅仅要求输入序列号</p>
-<p><img src="https://s2.loli.net/2024/10/18/lwybHN4q56dmR9j.png" alt="image-20241017014429251.png"></p>
-<p><img src="https://s2.loli.net/2024/10/18/QfrC6KF89zg5hx1.png" alt="image-20241017014729116.png"></p>
-<p><img src="https://s2.loli.net/2024/10/18/hBZVolvQ9NnmjA4.png" alt="image-20241017020318355.png"></p>
-<p>先从较为简单的序列号入手，在反汇编窗口右键选择<strong>中文引擎搜索</strong>一栏中的<strong>智能搜索</strong>，找到之前的错误信息“Try Again！！”，发现有三个，依次点进去查看</p>
-<p>查找文本-&gt;搜索Try Again</p>
-<p><img src="https://s2.loli.net/2024/10/18/b6iFHAauPo8ETtj.png" alt="image-20241017020705303.png"></p>
-<p>定位到第一个try again，发现在错误信息之上便是成功的信息</p>
-<p><img src="C:\Users\25373\AppData\Roaming\Typora\typora-user-images\image-20241017020823147.png" alt="image-20241017020823147"></p>
-<p><em>*<em>JNZ</em>（或JNE，jump if not zero, or not equal），是汇编语言中的条件转移*指令</em>，结果不为零（或不相等）则转移。**</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0042F4D5  |. /75 1A         jnz short Acid_bur.0042F4F1         ;//这一行是为了判断上一个操作的结果。如果结果不是0，则跳转到 0042F4F1，否则继续执行下面的代码。</span><br><span class="line">0042F4D7  |. |6A 00         push 0x0						  ;//将立即数 0x0（值为0）压入栈中。push 指令将数据压入栈顶，以供后续函数调用使用。</span><br><span class="line">0042F4D9  |. |B9 64F54200   mov ecx,Acid_bur.0042F564                ;  Congratz!</span><br><span class="line">0042F4DE  |. |BA 70F54200   mov edx,Acid_bur.0042F570                ;  God Job dude !! =)</span><br><span class="line">0042F4E3  |. |A1 480A4300   mov eax,dword ptr ds:[0x430A48]		;//从内存地址 0x430A48 处读取一个32位（4字节）的值，并存入寄存器 eax 中。</span><br><span class="line">0042F4E8  |. |8B00          mov eax,dword ptr ds:[eax]			;//再从 eax 寄存器指向的内存地址中读取一个32位值，并将其存回 eax 中。</span><br><span class="line">0042F4EA  |. |E8 81ACFFFF   call Acid_bur.0042A170</span><br><span class="line">0042F4EF  |. |EB 18         jmp short Acid_bur.0042F509			;//无条件跳转到地址 0042F509</span><br><span class="line">0042F4F1  |&gt; \6A 00         push 0x0</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>那么想要跳过这个错误提示信息则需要将 0042F803处的JNZ给nop掉。nop掉后F9让程序跑起来，然后重新点击【Check it Baby!】。OD中继续在MessageBox处中断了。</p>
-<p><strong>NOP（No Operation）</strong> 是一种“空操作”指令，执行时什么也不做。如果你把 <code>JNZ</code> 替换为 <code>NOP</code>，则无论条件是否成立，程序都会继续向下执行，而不会跳转到错误处理代码。这样可以绕过错误提示</p>
-<p><img src="https://s2.loli.net/2024/10/18/WqKYuVxh8D7ykwB.png" alt="image-20241017021824173.png"></p>
-<p><img src="/./C:/Users/25373/AppData/Roaming/Typora/typora-user-images/image-20241017021839813.png" alt="image-20241017021839813"></p>
-<p>运行之后发现是serial的破解</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a45762b65.png" alt="image-20241017023432683.png"></p>
-<p>同理，找到下一个“good job dude”</p>
-<p><img src="https://s2.loli.net/2024/10/18/huFPdogO7GfM34Q.png" alt="image-20241017020823147.png"></p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a40d3350c.png" alt="image-20241017025519846.png"></p>
-<p>如何保存文件呢</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a49d022de.png" alt="image-20241017023524828.png"></p>
-<h4 id="注册码"><a href="#注册码" class="headerlink" title="注册码"></a>注册码</h4><p>然后可以想到在这之上应该会有个函数接收用户输入的序列号和正确的序列号比较，于是我们再往上找，找到过程的起点设置断点。</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a4b61fade.png" alt="image-20241017030312417.png"></p>
-<p>按F9运行程序，点击确定后，点击右侧按钮，然后点击check it.程序运行到到断点处停下。按F8单步运行。前面几行代码建立栈帧并将eax置零。之后将Hello与Dude字符串中间加个空格然后拼接成Hello Dude。</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a4c7a27e4.png" alt="image-20241017031239752.png"></p>
-<p>此时栈中的情况如下：</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a4db1fb42.png" alt="image-20241017031440608.png"></p>
-<p>接着运行到下图位置：</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a50ba8107.png" alt="6711a4ed9a351[1].png"></p>
-<p>这两行代码将局部变量3、4分别传给edx和eax，然后调用了一个过程。到栈窗口中查看发现这两个局部变量分别为我们输入的和Hello Dude，这为两个参数，调用函数之后便紧跟跳转语句，再之后便是成功信息和正确信息。可以猜测Hello Dude!为正确的序列号。经过验证可以发现正确。</p>
-<p>接着分析第二个try again.定位到其位置,往上找，找到过程的起点设置断点，并将程序运行到断点。</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a5251ca01.png" alt="image-20241017031930797.png"></p>
-<p>之后按F8单步运行，之后的代码是一系列计算，先不管它，往下找，直到出现分支。</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a5363b475.png" alt="image-20241017032227891.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">0042FA57  |.  83F8 04       cmp eax,0x4							;//cmp eax, 0x4：比较 eax 寄存器的值与 0x4</span><br><span class="line">0042FA5A  |.  7D 1D         jge short Acid_bur.0042FA79			;//条件跳转指令，&quot;Jump if Greater or Equal&quot;。如果 eax 的值大于或等于 4，则跳转到地址 0042FA79</span><br><span class="line">0042FA5C  |.  6A 00         push 0x0</span><br><span class="line">0042FA5E  |.  B9 74FB4200   mov ecx,Acid_bur.0042FB74                ;  Try Again!</span><br><span class="line">0042FA63  |.  BA 80FB4200   mov edx,Acid_bur.0042FB80                ;  Sorry , The serial is incorect !</span><br><span class="line">0042FA68  |.  A1 480A4300   mov eax,dword ptr ds:[0x430A48]			;//从地址 0x430A48 中读取一个32位的值，并存入 eax</span><br><span class="line">0042FA6D  |.  8B00          mov eax,dword ptr ds:[eax]				;//从 eax 寄存器指向的内存地址读取值，并将其存回 eax</span><br><span class="line">0042FA6F  |.  E8 FCA6FFFF   call Acid_bur.0042A170</span><br><span class="line">0042FA74  |.  E9 BE000000   jmp Acid_bur.0042FB37					;//无条件跳转到地址 0042FB37</span><br><span class="line">0042FA79  |&gt;  8D55 F0       lea edx,[local.4]						;//加载地址 local.4 的地址到 edx 中</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p> <code>eax</code> 的值小于 <code>4</code>，则会向用户显示错误信息并提示重新尝试；否则，代码会继续执行到后续部分。</p>
-<p>发现是与4比较，之上的函数调用前将输入的name传入，返回的eax为0x19，恰好为字符串的长度，说明这是在判断长度是否大于等于4</p>
-<p>那么第三个try again对应的应该是name&#x2F;serial，猜想大致是利用输入的用户名计算序列号然后和输入的序列号对比，判断是否正确。</p>
-<p>serial计算的简单分析</p>
-<p>在之前发现的判断字符串长度是否大于等于4的后方设置断点，单步运行</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a549f15a3.png" alt="image-20241017033559424.png"></p>
-<p>第一位取出，乘以一个常量0x29，然后再与自己本身相加（相当于乘以2），得到0FB2，存放在0x431750处。之后是将CW、-、CRACKED放入栈.</p>
-<p>接着往下看，可以发现最后产生了如下结果：</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a55e6f2ef.png" alt="image-20241017033856932.png"></p>
-<p>0019F620   023DE5A8  ASCII “CW-4018-CRACKED”</p>
-<p>CW-4018-CRACKED就是正确的序列哦</p>
-<h4 id="去掉烦人的提示对话框"><a href="#去掉烦人的提示对话框" class="headerlink" title="去掉烦人的提示对话框"></a>去掉烦人的提示对话框</h4><p>去掉烦人的提示对话框（一般软件设计者用来提醒用户购买正式版本的窗口），要完全去除提示窗口，只需要找到创建该窗口的代码并将其跳过。显示窗口的常用函数有：</p>
-<ul>
-<li>MessageBoxA(W)</li>
-<li>MessageBoxExA(W)</li>
-<li>DialogBoxParamA(W)</li>
-<li>ShowWindow</li>
-<li>CreateWindowExA(W)</li>
-</ul>
-<p>OD打开之后，用Ctrl+G跳转到上面常用函数处，然后按下F2键下断点</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a56f685b1.png" alt="image-20241017130225745.png"></p>
-<p>在MessageBoxA处下断点<img src="https://free2.yunpng.top/2024/10/18/6711a57f8ad78.png" alt="image-20241017130329012.png"></p>
-<p>下完断点后，我们按下F9让程序运行起来，会发现程序在函数MessageBoxA处断下，观察栈区，会发现就是我们要去除的窗口信息，即此时MessageBoxA函数执行完，就会弹出提示窗口信息</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a597dfd6f.png" alt="image-20241017130642411.png"></p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a5a75b54a.png" alt="image-20241017131033880.png"></p>
-<p>本来我们只要nop掉调用MessageBoxA的代码就可以实现目标一，不过后面验证后的结果提示窗口也会调用此处，所以我们还要继续往上找。</p>
-<p>（图找的是吾爱破解里的，因为懒的加注释了，这里挺详细的。）</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a5ba6f728.png" alt="image-20241017131646549.png"></p>
-<p>终于来到最终的关键处，此时我们采用第二种，直接将push 0x0改为retn</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a5cb939a6.png" alt="image-20241017132140992.png"></p>
-<p>此时运行的时候就没有弹窗啦</p>
-<h4 id="将英文改成中文"><a href="#将英文改成中文" class="headerlink" title="将英文改成中文"></a>将英文改成中文</h4><p>改中文，右键汇编窗口，数据窗口跟随，立即数</p>
-<p><img src="https://free2.yunpng.top/2024/10/18/6711a5dd87a0d.png" alt="image-20241018064005935.png"></p>
-<p>在数据窗口选中对应的数据进行二进制编辑</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hello you have to kill me</span><br><span class="line">你好，你必须杀了我</span><br><span class="line">Welcome to this Newbies Crackmemade by ACiD BuRN [CracKerWoRlD]</span><br><span class="line">欢迎来到这个由ACiD BuRN [CracKerWoRlD]制作的Newbies Crackmemade</span><br><span class="line">.......</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>根据自己的翻译能力进行修改成合适自己的</p>
-<p><img src="https://s2.loli.net/2024/10/18/2MQD3ozKby7jdRU.png" alt="image-20241018073227428.png"><br><img src="https://s2.loli.net/2024/10/18/aeMLRcT1FjEzH9I.png" alt="image-20241018073200575.png"></p>
-<p>目前就到这里</p>
-<p>后面如果会了解到其他知识的话会从第一题开始尝试修改的，毕竟学习永无止境</p>
-]]></content>
-      <categories>
-        <category>逆向自学</category>
       </categories>
       <tags>
         <tag>自学</tag>
